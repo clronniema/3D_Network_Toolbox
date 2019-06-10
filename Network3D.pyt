@@ -15,6 +15,7 @@ class Toolbox(object):
         # List of tool classes associated with this toolbox
         self.tools = [Network2DTo3D]
 
+
 class Network2DTo3D(object):
     def __init__(self):
         """Define the tool (tool name is the name of the class)."""
@@ -24,13 +25,15 @@ class Network2DTo3D(object):
         self.canRunInBackground = True
         self.category = "3D Network Generation"
 
+        self
+
     def getParameterInfo(self):
         """Define parameter definitions"""
 
         param0 = arcpy.Parameter(
             displayName="Input Surface",
             name="Input_Surface",
-            datatype=["DERasterDataset", "GPFeatureLayer"],
+            datatype=["GPLayer", "DERasterDataset", "GPFeatureLayer"],
             parameterType="Required",
             direction="Input")
 
@@ -101,17 +104,65 @@ class Network2DTo3D(object):
         parameter.  This method is called after internal validation."""
         return
 
-    def execute(self, parameters, messages):
-
+    def checkOutExtension(self):
         arcpy.CheckOutExtension("3D")
         arcpy.CheckOutExtension("Spatial")
+        return
+
+    def checkInExtension(self):
+        arcpy.CheckInExtension("3D")
+        arcpy.CheckInExtension("Spatial")
+        return
+
+    def deleteInMemory(self):
+        # Delete in-memory table
+        arcpy.Delete_management("in_memory\\lines_interpolate")
+        arcpy.Delete_management("in_memory\\lines_nosplit")
+        arcpy.Delete_management("in_memory\\nosplit_to3d")
+        arcpy.Delete_management("in_memory\\lines_interpolate_lyr")
+        arcpy.Delete_management("in_memory\\lines_nosplit_lyr")
+        arcpy.Delete_management("in_memory\\lines")
+        arcpy.Delete_management("in_memory\\points")
+        arcpy.Delete_management("in_memory\\ordinary_output")
+        return
+
+
+    def GeneratePointsAlongLines(self, lines_layer, param_sample_distance=None):
+        if param_sample_distance == None:
+            arcpy.GeneratePointsAlongLines_management(lines_layer, self.points, "DISTANCE", 10, "", "")
+        elif not param_sample_distance.isnumeric():
+            arcpy.GeneratePointsAlongLines_management(lines_layer, self.points, "DISTANCE", 10, "", "")
+        else:
+            arcpy.GeneratePointsAlongLines_management(lines_layer, self.points, "DISTANCE",
+                                                      float(param_sample_distance), "", "")
+
+
+    def AddFieldAndCalculations(self, case):
+        return
+
+    def set_extraction_variables(self):
+
+
+        return
+
+    def execute(self, parameters, messages):
+
+        self.checkOutExtension()
+
+        # get params and define layer names
+        param_in_raster = parameters[0].valueAsText
+        param_in_network = parameters[1].valueAsText
+        param_sample_distance = parameters[2].valueAsText
+        param_has_no_split = parameters[3].value
+        param_has_no_slope = parameters[4].value
+        param_out_network = parameters[5].valueAsText
 
         lines = "in_memory\\lines"
         points = "in_memory\\points"
         lines_interpolate = "in_memory\\lines_interpolate"
         lines_nosplit = "in_memory\\lines_nosplit"
         nosplit_to3d = "in_memory\\nosplit_to3d"
-        Search_Radius = 0.001
+        search_radius = 0.001
         lines_interpolate_lyr = "in_memory\\lines_interpolate_lyr"
         lines_nosplit_lyr = "in_memory\\lines_nosplit_lyr"
         output_feature_class_lyr = "in_memory\\output_feature_class_lyr"
@@ -120,21 +171,21 @@ class Network2DTo3D(object):
         output_feature_class = "in_memory\\ordinary_output"
 
         # Process: Interpolate Shape
-        arcpy.InterpolateShape_3d(parameters[0].valueAsText, parameters[1].valueAsText, lines_interpolate, "", "1", "BILINEAR", "DENSIFY", "0")
+        arcpy.InterpolateShape_3d(param_in_raster, param_in_network, lines_interpolate, "", "1", "BILINEAR", "DENSIFY", "0")
         # Process: Add Fields
         arcpy.AddField_management(lines_interpolate, "Start_Z", "DOUBLE", "", "", "", "", "NULLABLE", "NON_REQUIRED", "")
         arcpy.AddField_management(lines_interpolate, "End_Z", "DOUBLE", "", "", "", "", "NULLABLE", "NON_REQUIRED", "")
         arcpy.AddField_management(lines_interpolate, "Max_Z", "DOUBLE", "", "", "", "", "NULLABLE", "NON_REQUIRED", "")
-               
+
         # See if there are No_Split edges specified
-        if parameters[3].value == True:
+        if param_has_no_split == True:
             # Process: Select Layer By Attribute
             arcpy.MakeFeatureLayer_management(lines_interpolate, lines_interpolate_lyr)
             arcpy.SelectLayerByAttribute_management(lines_interpolate_lyr, "NEW_SELECTION", "NO_SPLIT = 1")
-            
+
             # Process: Copy out the No Split edges to the lines_nosplit feature
             arcpy.CopyFeatures_management(lines_interpolate_lyr, lines_nosplit)
-            
+
             # Process: Switch back to the edges that are NOT to be split
             arcpy.SelectLayerByAttribute_management(lines_interpolate_lyr, "SWITCH_SELECTION", "")
             arcpy.CopyFeatures_management(lines_interpolate_lyr, lines)
@@ -147,24 +198,17 @@ class Network2DTo3D(object):
                 else:
                     # Process: Calculate Field (3)
                     arcpy.CalculateField_management(lines_nosplit, eachZ[0], eachZ[1], "PYTHON_9.3", MaximumValueFunc)
-            
+
             # Feature To 3D By Attribute for No_Split edges
             arcpy.FeatureTo3DByAttribute_3d(lines_nosplit, nosplit_to3d, "Start_Z", "End_Z")
-            
             arcpy.AddMessage("Finished processing No Split lines...")
-            
+
             # Generate Points Along Lines
-            if parameters[2].valueAsText == None:
-                arcpy.GeneratePointsAlongLines_management(lines, points, "DISTANCE", 10, "", "")
-            elif not parameters[2].valueAsText.isnumeric():
-                arcpy.GeneratePointsAlongLines_management(lines, points, "DISTANCE", 10, "", "")
-            else:
-                arcpy.GeneratePointsAlongLines_management(lines, points, "DISTANCE", float(parameters[2].valueAsText), "", "")
-            
+            self.GeneratePointsAlongLines(lines, param_sample_distance)
             arcpy.AddMessage("Finished generating points...")
-            
+
             # Split Lines at Points
-            arcpy.SplitLineAtPoint_management(lines, points, output_feature_class, Search_Radius)
+            arcpy.SplitLineAtPoint_management(lines, points, output_feature_class, search_radius)
             for eachZ in startEndMaxZ:
                 if eachZ[0] != "Max_Z":
                     # Process: Calculate Field (6), (7)
@@ -172,7 +216,7 @@ class Network2DTo3D(object):
                 else:
                     # Process: Calculate Field (8)
                     arcpy.CalculateField_management(output_feature_class, eachZ[0], eachZ[1], "PYTHON_9.3", MaximumValueFunc)
-            
+
             arcpy.AddMessage("Finished splitting lines at points...")
 
             # Append split and no_split lines
@@ -192,38 +236,24 @@ class Network2DTo3D(object):
             arcpy.CalculateField_management(output_feature_class, "TF_MIN_2D", "(!shape.length!/(5036.742125))*60", "PYTHON", "")
             arcpy.CalculateField_management(output_feature_class, "FT_MIN_3D", "(!Length3D!/((6*(math.exp((-3.5)*(math.fabs((!End_Z!-!Start_Z!)/(!shape.length!)+0.05)))))*1000))*60", "PYTHON", "")
             arcpy.CalculateField_management(output_feature_class, "TF_MIN_3D", "(!Length3D!/((6*(math.exp((-3.5)*(math.fabs((!Start_Z!-!End_Z!)/(!shape.length!)+0.05)))))*1000))*60", "PYTHON", "")
-            
+
             # Replace 3D walk time with 2D walk time for any No_Slope lines
-            if parameters[4].value == True:
+            if param_has_no_slope == True:
                 arcpy.MakeFeatureLayer_management(output_feature_class, output_feature_class_lyr)
                 arcpy.SelectLayerByAttribute_management(output_feature_class_lyr, "NEW_SELECTION", "NO_SLOPE = 1")
                 arcpy.CalculateField_management(output_feature_class_lyr, "FT_MIN_3D", "!FT_MIN_2D!", "PYTHON", "")
                 arcpy.CalculateField_management(output_feature_class_lyr, "TF_MIN_3D", "!TF_MIN_2D!", "PYTHON", "")
-            
+
             arcpy.AddMessage("Finished calculating walk times...")
-        
+
         # Alternate workflow if no No_Split parameter is set
         else:
             # Generate Points Along Lines
-            if parameters[2].valueAsText == None:
-                arcpy.GeneratePointsAlongLines_management(lines_interpolate, points, "DISTANCE", 10, "", "")
-            elif not parameters[2].valueAsText.isnumeric():
-                arcpy.GeneratePointsAlongLines_management(lines_interpolate, points, "DISTANCE", 10, "", "")
-            else:
-                arcpy.GeneratePointsAlongLines_management(lines_interpolate, points, "DISTANCE", float(parameters[2].valueAsText), "", "")
-
-            # Generate Points Along Lines
-            if parameters[2].valueAsText == None:
-                arcpy.GeneratePointsAlongLines_management(lines, points, "DISTANCE", 10, "", "")
-            elif not parameters[2].valueAsText.isnumeric():
-                arcpy.GeneratePointsAlongLines_management(lines, points, "DISTANCE", 10, "", "")
-            else:
-                arcpy.GeneratePointsAlongLines_management(lines, points, "DISTANCE", float(parameters[2].valueAsText), "", "")
-            
+            self.GeneratePointsAlongLines(lines_interpolate, param_sample_distance)
             arcpy.AddMessage("Finished generating points...")
-                        
+
             # Split Lines at Points
-            arcpy.SplitLineAtPoint_management(lines_interpolate, points, output_feature_class, Search_Radius)
+            arcpy.SplitLineAtPoint_management(lines_interpolate, points, output_feature_class, search_radius)
             for eachZ in startEndMaxZ:
                 if eachZ[0] != "Max_Z":
                     # Process: Calculate Field (6), (7)
@@ -231,7 +261,7 @@ class Network2DTo3D(object):
                 else:
                     # Process: Calculate Field (8)
                     arcpy.CalculateField_management(output_feature_class, eachZ[0], eachZ[1], "PYTHON_9.3", MaximumValueFunc)
-            
+
             arcpy.AddMessage("Finished splitting lines at points...")
 
             # Add Z Information
@@ -248,31 +278,21 @@ class Network2DTo3D(object):
             arcpy.CalculateField_management(output_feature_class, "TF_MIN_2D", "(!shape.length!/(5036.742125))*60", "PYTHON", "")
             arcpy.CalculateField_management(output_feature_class, "FT_MIN_3D", "(!Length3D!/((6*(math.exp((-3.5)*(math.fabs((!End_Z!-!Start_Z!)/(!shape.length!)+0.05)))))*1000))*60", "PYTHON", "")
             arcpy.CalculateField_management(output_feature_class, "TF_MIN_3D", "(!Length3D!/((6*(math.exp((-3.5)*(math.fabs((!Start_Z!-!End_Z!)/(!shape.length!)+0.05)))))*1000))*60", "PYTHON", "")
-            
+
             # Replace 3D walk time with 2D walk time for any No_Slope lines
-            if parameters[4].value == True:
+            if param_has_no_slope == True:
                 arcpy.MakeFeatureLayer_management(output_feature_class, output_feature_class_lyr)
                 arcpy.SelectLayerByAttribute_management(output_feature_class_lyr, "NEW_SELECTION", "NO_SLOPE = 1")
                 arcpy.CalculateField_management(output_feature_class_lyr, "FT_MIN_3D", "!FT_MIN_2D!", "PYTHON", "")
                 arcpy.CalculateField_management(output_feature_class_lyr, "TF_MIN_3D", "!TF_MIN_2D!", "PYTHON", "")
-            
+
             arcpy.AddMessage("Finished calculating walk times...")
 
         # Prepare output
-        arcpy.CopyFeatures_management(output_feature_class, parameters[5].valueAsText)
+        arcpy.CopyFeatures_management(output_feature_class, param_out_network)
 
-        # Delete in-memory table
-        arcpy.Delete_management("in_memory\\lines_interpolate")
-        arcpy.Delete_management("in_memory\\lines_nosplit")
-        arcpy.Delete_management("in_memory\\nosplit_to3d")
-        arcpy.Delete_management("in_memory\\lines_interpolate_lyr")
-        arcpy.Delete_management("in_memory\\lines_nosplit_lyr")
-        arcpy.Delete_management("in_memory\\lines")
-        arcpy.Delete_management("in_memory\\points")
-        arcpy.Delete_management("in_memory\\ordinary_output")
-
-        arcpy.CheckInExtension("3D")
-        arcpy.CheckInExtension("Spatial")
+        self.deleteInMemory()
+        self.checkInExtension()
 
         return
 
