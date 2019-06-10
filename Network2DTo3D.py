@@ -10,9 +10,12 @@
 # Python Version:   3.6
 # License:
 #
+#
 #  Using this:
+#
 #  1) Call this as a script
 #     i.e. python Network2DTo3D param1 param2...
+#
 #  2) Import script and pass parameters
 #     import Network2DTo3D
 #     Network2DTo3D.interpolate(sys.argv[n:n])

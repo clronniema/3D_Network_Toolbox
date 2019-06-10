@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1d0be270-4e5b-41e4-a8ce-dc8c33b45ff3" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/CollectDSMFromUsgs.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CollectDataFromOsm.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Network2DTo3D.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Network3DScript.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Network3D.pyt" beforeDir="false" afterPath="$PROJECT_DIR$/Network3D.pyt" afterDir="false" />
+    <list default="true" id="1d0be270-4e5b-41e4-a8ce-dc8c33b45ff3" name="Default Changelist" comment="Minor styling change">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Network2DTo3D.py" beforeDir="false" afterPath="$PROJECT_DIR$/Network2DTo3D.py" afterDir="false" />
     </list>
+    <list id="9bd209f7-b726-49f9-9931-1adf56f60d97" name="Minor styling change" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,53 +13,17 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5570362">
-      <split-first>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/Network3DScript.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="197">
-                  <caret line="26" column="32" lean-forward="true" selection-start-line="26" selection-start-column="32" selection-end-line="26" selection-end-column="32" />
-                  <folding>
-                    <element signature="e#374#391#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/Network2DTo3D.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="357">
-                  <caret line="168" column="60" selection-start-line="168" selection-start-column="60" selection-end-line="168" selection-end-column="60" />
-                  <folding>
-                    <element signature="e#4064#4568#0" />
-                    <element signature="e#4613#5038#0" />
-                    <element signature="e#5084#5421#0" />
-                    <element signature="e#5473#6113#0" />
-                    <element signature="e#9955#11641#0" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/Network2DTo3D.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="293">
-                  <caret line="228" column="4" lean-forward="true" selection-start-line="228" selection-start-column="4" selection-end-line="228" selection-end-column="101" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Network2DTo3D.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="228">
+              <caret line="12" column="1" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -137,18 +99,32 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-7" />
+    <option name="x" value="953" />
     <option name="width" value="974" />
     <option name="height" value="1047" />
   </component>
   <component name="ProjectView">
-    <navigator proportions="" version="1">
+    <navigator currentView="Scope" currentSubView="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope" proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
-    <panes />
+    <panes>
+      <pane id="ProjectPane" />
+      <pane id="Scope">
+        <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
+          <expand>
+            <path>
+              <item name="3D_Network_Toolbox" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="D:\workspace\network_toolbox\3D_Networks_Project\3D_Network_Toolbox" type="442cc68d:ScopeViewTreeModel$RootNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
@@ -233,11 +209,20 @@
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="1d0be270-4e5b-41e4-a8ce-dc8c33b45ff3" name="Default Changelist" comment="" />
+      <changelist id="9bd209f7-b726-49f9-9931-1adf56f60d97" name="Minor styling change" comment="" />
       <created>1559639644395</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1559639644395</updated>
     </task>
+    <task id="LOCAL-00001" summary="Minor styling change">
+      <created>1560160016672</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1560160016672</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TodoView">
@@ -253,7 +238,7 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.5180328" weight="0.28118163" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.5180328" visible="true" weight="0.28091684" />
       <window_info id="Structure" order="1" sideWeight="0.4819672" side_tool="true" weight="0.28118163" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -263,7 +248,7 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.329718" />
-      <window_info anchor="bottom" id="Version Control" order="7" weight="0.329718" />
+      <window_info anchor="bottom" id="Version Control" order="7" visible="true" weight="0.32936078" />
       <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.4989339" weight="0.329718" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50159913" side_tool="true" weight="0.324295" />
       <window_info anchor="bottom" id="Python Console" order="10" sideWeight="0.49946696" weight="0.3286334" />
@@ -295,6 +280,50 @@
       <window_info anchor="right" id="R Packages" order="4" />
     </layout-to-restore>
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list />
+          </value>
+        </entry>
+        <entry key="User">
+          <value>
+            <list />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Minor styling change" />
+    <option name="LAST_COMMIT_MESSAGE" value="Minor styling change" />
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
@@ -305,17 +334,17 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/Network2DTo3D.py</url>
-          <line>297</line>
+          <line>300</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/Network2DTo3D.py</url>
-          <line>181</line>
+          <line>184</line>
           <option name="timeStamp" value="19" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/Network2DTo3D.py</url>
-          <line>178</line>
+          <line>181</line>
           <option name="timeStamp" value="24" />
         </line-breakpoint>
       </breakpoints>
@@ -427,15 +456,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Network2DTo3D.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="168" column="60" selection-start-line="168" selection-start-column="60" selection-end-line="168" selection-end-column="60" />
-          <folding>
-            <element signature="e#4064#4568#0" />
-            <element signature="e#4613#5038#0" />
-            <element signature="e#5084#5421#0" />
-            <element signature="e#5473#6113#0" />
-            <element signature="e#9955#11641#0" />
-          </folding>
+        <state relative-caret-position="228">
+          <caret line="12" column="1" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
         </state>
       </provider>
     </entry>
