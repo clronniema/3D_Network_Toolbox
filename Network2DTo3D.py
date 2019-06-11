@@ -290,4 +290,4 @@ def interpolate(params):
 
 if __name__ == "__main__":
     # Execute only if run as standalone script
-    interpolate(sys.argv)
+    interpolate(sys.argv[1:7])

@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1d0be270-4e5b-41e4-a8ce-dc8c33b45ff3" name="Default Changelist" comment="Minor styling changes">
+    <list default="true" id="1d0be270-4e5b-41e4-a8ce-dc8c33b45ff3" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/CitiesList.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CollectDataFromOsm.py" beforeDir="false" afterPath="$PROJECT_DIR$/CollectDataFromOsm.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Network2DTo3D.py" beforeDir="false" afterPath="$PROJECT_DIR$/Network2DTo3D.py" afterDir="false" />
     </list>
     <list id="9bd209f7-b726-49f9-9931-1adf56f60d97" name="Minor styling change" comment="" />
@@ -13,41 +15,53 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.4854369">
-      <split-first>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/Network2DTo3D.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="445">
-                  <caret line="289" selection-start-line="289" selection-end-line="289" />
-                  <folding>
-                    <element signature="e#598#610#0" expanded="true" />
-                    <element signature="e#9474#11068#0" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/Network2DTo3D.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-479">
-                  <caret line="123" column="12" selection-start-line="123" selection-start-column="12" selection-end-line="123" selection-end-column="12" />
-                  <folding>
-                    <element signature="e#598#610#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Network2DTo3D.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="177">
+              <caret line="71" column="38" lean-forward="true" selection-start-line="71" selection-start-column="38" selection-end-line="71" selection-end-column="38" />
+              <folding>
+                <element signature="e#598#610#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Network3DScript.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="160">
+              <caret line="25" column="27" lean-forward="true" selection-start-line="25" selection-start-column="27" selection-end-line="25" selection-end-column="27" />
+              <folding>
+                <element signature="e#374#391#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/CollectDataFromOsm.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="304">
+              <caret line="37" column="128" selection-start-line="37" selection-start-column="128" selection-end-line="37" selection-end-column="128" />
+              <folding>
+                <element signature="e#1#19#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/CitiesList.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="57">
+              <caret line="3" column="38" selection-start-line="3" selection-start-column="38" selection-end-line="3" selection-end-column="38" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -104,27 +118,16 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/CollectDSMFromUsgs.py" />
-        <option value="$PROJECT_DIR$/CollectDataFromOsm.py" />
         <option value="$PROJECT_DIR$/Network3D.pyt" />
         <option value="$PROJECT_DIR$/Network3DScript.py" />
+        <option value="$PROJECT_DIR$/CitiesList.py" />
+        <option value="$PROJECT_DIR$/CollectDataFromOsm.py" />
         <option value="$PROJECT_DIR$/Network2DTo3D.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectConfigurationFiles">
-    <option name="files">
-      <list>
-        <option value="$PROJECT_DIR$/.idea/3D_Network_Toolbox.iml" />
-        <option value="$PROJECT_DIR$/.idea/modules.xml" />
-        <option value="$PROJECT_DIR$/.idea/vcs.xml" />
-        <option value="$PROJECT_DIR$/.idea/libraries/R_User_Library.xml" />
-        <option value="$PROJECT_DIR$/.idea/misc.xml" />
-        <option value="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" />
-      </list>
-    </option>
-  </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-7" />
+    <option name="x" value="953" />
     <option name="width" value="974" />
     <option name="height" value="1047" />
   </component>
@@ -174,7 +177,28 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.Network3DScript">
+  <component name="RunManager" selected="Python.Network2DTo3D">
+    <configuration name="CollectDataFromOsm" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="3D_Network_Toolbox" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/CollectDataFromOsm.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="Network2DTo3D" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="3D_Network_Toolbox" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -188,7 +212,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Network2DTo3D.py" />
-      <option name="PARAMETERS" value="" />
+      <option name="PARAMETERS" value="&quot;$PROJECT_DIR$/../3D_Networks_Project.gdb/HK_DTM_2m_Clip&quot; &quot;$PROJECT_DIR$/../3D_Networks_Project.gdb/OSMnx_Walk&quot; 10 True True &quot;$PROJECT_DIR$/../3D_Networks_Test.gdb/testoutput&quot;" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -220,11 +244,13 @@
     <list>
       <item itemvalue="Python.Network2DTo3D" />
       <item itemvalue="Python.Network3DScript" />
+      <item itemvalue="Python.CollectDataFromOsm" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.Network3DScript" />
         <item itemvalue="Python.Network2DTo3D" />
+        <item itemvalue="Python.CollectDataFromOsm" />
+        <item itemvalue="Python.Network3DScript" />
       </list>
     </recent_temporary>
   </component>
@@ -264,7 +290,14 @@
       <option name="project" value="LOCAL" />
       <updated>1560235459810</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Minor styling changes and basic exception handling">
+      <created>1560238901409</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1560238901409</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TodoView">
@@ -280,20 +313,20 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.5125" visible="true" weight="0.17643923" />
-      <window_info id="Structure" order="1" sideWeight="0.4875" side_tool="true" visible="true" weight="0.17643923" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.5124283" visible="true" weight="0.17803837" />
+      <window_info id="Structure" order="1" sideWeight="0.48757172" side_tool="true" visible="true" weight="0.17803837" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.33152762" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3066089" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49840087" weight="0.43435448" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.45070422" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" sideWeight="0.49840087" visible="true" weight="0.43336946" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.329718" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32936078" />
       <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.4989339" weight="0.32936078" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50159913" side_tool="true" weight="0.324295" />
-      <window_info anchor="bottom" id="Python Console" order="10" sideWeight="0.49946696" weight="0.32827735" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5021882" side_tool="true" weight="0.32822758" />
+      <window_info anchor="bottom" id="Python Console" order="10" sideWeight="0.49781182" weight="0.3629469" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -365,7 +398,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Minor styling change" />
     <MESSAGE value="Minor bug fix to script - removing toolbox part of code (TBD)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Minor bug fix to script - removing toolbox part of code (TBD)" />
+    <MESSAGE value="Minor styling changes and basic exception handling" />
+    <option name="LAST_COMMIT_MESSAGE" value="Minor styling changes and basic exception handling" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -379,6 +413,16 @@
           <url>file://$PROJECT_DIR$/Network3DScript.py</url>
           <line>25</line>
           <option name="timeStamp" value="38" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Network2DTo3D.py</url>
+          <line>292</line>
+          <option name="timeStamp" value="39" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Network2DTo3D.py</url>
+          <line>73</line>
+          <option name="timeStamp" value="40" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -443,13 +487,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CollectDataFromOsm.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="12" selection-start-column="12" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/CollectDSMFromUsgs.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -508,20 +545,39 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/CitiesList.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="57">
+          <caret line="3" column="38" selection-start-line="3" selection-start-column="38" selection-end-line="3" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CollectDataFromOsm.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="37" column="128" selection-start-line="37" selection-start-column="128" selection-end-line="37" selection-end-column="128" />
+          <folding>
+            <element signature="e#1#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Network3DScript.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
-          <caret line="13" column="16" selection-start-line="13" selection-start-column="16" selection-end-line="13" selection-end-column="16" />
+        <state relative-caret-position="160">
+          <caret line="25" column="27" lean-forward="true" selection-start-line="25" selection-start-column="27" selection-end-line="25" selection-end-column="27" />
+          <folding>
+            <element signature="e#374#391#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Network2DTo3D.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="445">
-          <caret line="289" selection-start-line="289" selection-end-line="289" />
+        <state relative-caret-position="177">
+          <caret line="71" column="38" lean-forward="true" selection-start-line="71" selection-start-column="38" selection-end-line="71" selection-end-column="38" />
           <folding>
             <element signature="e#598#610#0" expanded="true" />
-            <element signature="e#9474#11068#0" />
           </folding>
         </state>
       </provider>
