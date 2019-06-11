@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1d0be270-4e5b-41e4-a8ce-dc8c33b45ff3" name="Default Changelist" comment="Allow ArcGIS Pro toolbox to be used. Minor bug fix to script.">
+    <list default="true" id="1d0be270-4e5b-41e4-a8ce-dc8c33b45ff3" name="Default Changelist" comment="Minor styling changes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Network2DTo3D.py" beforeDir="false" afterPath="$PROJECT_DIR$/Network2DTo3D.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Network3D.pyt" beforeDir="false" afterPath="$PROJECT_DIR$/Network3D.pyt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Network3D.pyt.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Network3D.pyt.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Network3DScript.py" beforeDir="false" afterPath="$PROJECT_DIR$/Network3DScript.py" afterDir="false" />
     </list>
     <list id="9bd209f7-b726-49f9-9931-1adf56f60d97" name="Minor styling change" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -16,29 +13,41 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Network2DTo3D.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="436">
-              <caret line="280" column="7" selection-start-line="280" selection-start-column="7" selection-end-line="280" selection-end-column="7" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Network3DScript.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="263">
-              <caret line="24" column="36" lean-forward="true" selection-start-line="24" selection-start-column="36" selection-end-line="24" selection-end-column="36" />
-              <folding>
-                <element signature="e#374#391#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <splitter split-orientation="horizontal" split-proportion="0.4854369">
+      <split-first>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/Network2DTo3D.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="445">
+                  <caret line="289" selection-start-line="289" selection-end-line="289" />
+                  <folding>
+                    <element signature="e#598#610#0" expanded="true" />
+                    <element signature="e#9474#11068#0" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/Network2DTo3D.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="-479">
+                  <caret line="123" column="12" selection-start-line="123" selection-start-column="12" selection-end-line="123" selection-end-column="12" />
+                  <folding>
+                    <element signature="e#598#610#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -49,8 +58,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>SegmentID</find>
-      <find>Start_X</find>
       <find>add_field_Z</find>
       <find>TF_MIN_3D</find>
       <find>calculate_walktime_field</find>
@@ -68,7 +75,6 @@
       <find>replace_no_slope_lines</find>
       <find>query_no_slope</find>
       <find>generate_point</find>
-      <find>generate_points_along_lines</find>
       <find>simplify_and_generate_output</find>
       <find>calculate_circle_segment</find>
       <find>.format(timestamp)</find>
@@ -79,12 +85,16 @@
       <find>interpolate</find>
       <find>..interpolate</find>
       <find>.interpolate</find>
+      <find>generate_points_along_lines</find>
+      <find>&quot;</find>
+      <find>arcpy.</find>
     </findStrings>
     <replaceStrings>
       <replace>/</replace>
       <replace>param_out_network</replace>
       <replace>&quot;</replace>
       <replace>\\</replace>
+      <replace>'</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -113,7 +123,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-7" />
     <option name="width" value="974" />
     <option name="height" value="1047" />
@@ -218,6 +228,9 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="StructureViewFactory">
+    <option name="ACTIVE_ACTIONS" value=",SHOW_INHERITED,SHOW_FIELDS" />
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -244,7 +257,14 @@
       <option name="project" value="LOCAL" />
       <updated>1560160383429</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Minor bug fix to script - removing toolbox part of code (TBD)">
+      <created>1560235459810</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1560235459810</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TodoView">
@@ -257,15 +277,15 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="0" width="974" height="1047" extended-state="0" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.5118859" visible="true" weight="0.3129103" />
-      <window_info id="Structure" order="1" sideWeight="0.48811412" side_tool="true" visible="true" weight="0.3129103" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.5125" visible="true" weight="0.17643923" />
+      <window_info id="Structure" order="1" sideWeight="0.4875" side_tool="true" visible="true" weight="0.17643923" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.33260393" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.309628" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.33152762" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3066089" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49840087" weight="0.43435448" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -344,7 +364,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Minor styling change" />
-    <option name="LAST_COMMIT_MESSAGE" value="Minor styling change" />
+    <MESSAGE value="Minor bug fix to script - removing toolbox part of code (TBD)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Minor bug fix to script - removing toolbox part of code (TBD)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -353,16 +374,6 @@
           <url>file://$PROJECT_DIR$/Network3D.pyt</url>
           <line>147</line>
           <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Network2DTo3D.py</url>
-          <line>67</line>
-          <option name="timeStamp" value="34" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Network2DTo3D.py</url>
-          <line>281</line>
-          <option name="timeStamp" value="36" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/Network3DScript.py</url>
@@ -499,18 +510,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Network3DScript.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="263">
-          <caret line="24" column="36" lean-forward="true" selection-start-line="24" selection-start-column="36" selection-end-line="24" selection-end-column="36" />
-          <folding>
-            <element signature="e#374#391#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="22">
+          <caret line="13" column="16" selection-start-line="13" selection-start-column="16" selection-end-line="13" selection-end-column="16" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Network2DTo3D.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="436">
-          <caret line="280" column="7" selection-start-line="280" selection-start-column="7" selection-end-line="280" selection-end-column="7" />
+        <state relative-caret-position="445">
+          <caret line="289" selection-start-line="289" selection-end-line="289" />
+          <folding>
+            <element signature="e#598#610#0" expanded="true" />
+            <element signature="e#9474#11068#0" />
+          </folding>
         </state>
       </provider>
     </entry>
