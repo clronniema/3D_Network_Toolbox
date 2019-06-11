@@ -18,7 +18,7 @@
 #
 #  2) Import script and pass parameters
 #     import Network2DTo3D
-#     Network2DTo3D.interpolate(sys.argv[n:n])
+#     Network2DTo3D.interpolate(sys.argv[n:m])
 #
 # --------------------------------
 
@@ -40,18 +40,18 @@ param_sample_distance = None
 param_has_no_split = None
 param_has_no_slope = None
 param_out_network = None
-param_out_network = "D:/workspace/network_toolbox/3D_Networks_Project/3D_Networks_Test.gdb/testoutput_{0}".format(timestamp)
 
 # temporary file names
-lyr_lines_split = "in_memory\\lyr_lines_split".format(timestamp)
-lyr_points_split = "in_memory\\lyr_points_split".format(timestamp)
-lyr_interpolated_lines = "in_memory\\lyr_interpolated_lines".format(timestamp)
-lyr_lines_nosplit = "in_memory\\lyr_lines_nosplit".format(timestamp)
-lyr_lines_nosplit_3d = "in_memory\\lyr_lines_nosplit_3d".format(timestamp)
-lyr_lines_interpolate_select = "in_memory\\lyr_lines_interpolate_select".format(timestamp)
-lyr_output_feature_class_select = "in_memory\\lyr_output_feature_class_select".format(timestamp)
-lyr_output_feature_class = "in_memory\\lyr_output_feature_class".format(timestamp)
-lyr_dissolved_lines = "in_memory\\lyr_dissolved_lines".format(timestamp)
+lyr_lines_split = "in_memory\\lyr_lines_split"
+lyr_points_split = "in_memory\\lyr_points_split"
+lyr_interpolated_lines = "in_memory\\lyr_interpolated_lines"
+lyr_lines_nosplit = "in_memory\\lyr_lines_nosplit"
+lyr_lines_nosplit_3d = "in_memory\\lyr_lines_nosplit_3d"
+lyr_lines_interpolate_select = "in_memory\\lyr_lines_interpolate_select"
+lyr_output_feature_class_select = "in_memory\\lyr_output_feature_class_select"
+lyr_output_feature_class = "in_memory\\lyr_output_feature_class"
+lyr_dissolved_lines = "in_memory\\lyr_dissolved_lines"
+lyr_lines_select = "in_memory\\lyr_lines_select"
 
 # operation names of 3d/4d fields
 add_field_Z = "ADD_FIELD_Z"
@@ -68,20 +68,20 @@ def set_interpolation_params(params=None):
     if params is None:
         params = sys.argv
 
-    # global param_in_raster = params[1]
-    # global param_in_network = params[2]
-    # global param_sample_distance = params[3]
-    # global param_has_no_split = params[4]
-    # global param_has_no_slope = params[5]
-    # global param_out_network = params[6] + "_" + timestamp
+    param_in_raster = params[0]
+    param_in_network = params[1]
+    param_sample_distance = params[2]
+    param_has_no_split = params[3]
+    param_has_no_slope = params[4]
+    param_out_network = params[5] + "_" + timestamp
 
-    # param_in_raster = "D:/workspace/network_toolbox/3D_Networks_Project/3D_Networks_Project.gdb/" + "HK_DTM_2m"
-    param_in_raster = "D:/workspace/network_toolbox/3D_Networks_Project/3D_Networks_Project.gdb/" + "HK_DTM_2m_Clip"
-    param_in_network = "D:/workspace/network_toolbox/3D_Networks_Project/3D_Networks_Project.gdb/" + "OSMnx_Walk"
-    param_sample_distance = float('10')
-    param_has_no_split = True
-    param_has_no_slope = True
-    param_out_network = "D:/workspace/network_toolbox/3D_Networks_Project/3D_Networks_Test.gdb/testoutput_{0}".format(timestamp)
+    #Parameters for testing only
+    # param_in_raster = "D:/workspace/network_toolbox/3D_Networks_Project/3D_Networks_Project.gdb/" + "HK_DTM_2m_Clip"
+    # param_in_network = "D:/workspace/network_toolbox/3D_Networks_Project/3D_Networks_Project.gdb/" + "OSMnx_Walk"
+    # param_sample_distance = float('10')
+    # param_has_no_split = True
+    # param_has_no_slope = True
+    # param_out_network = "D:/workspace/network_toolbox/3D_Networks_Project/3D_Networks_Test.gdb/testoutput_{0}".format(timestamp)
 
 
 def check_out_extension():
@@ -153,7 +153,10 @@ def add_fields_or_calculate(case, param=None):
 
         return
     elif case == calculate_circle_segment:
+        arcpy.management.SelectLayerByAttribute(param, "NEW_SELECTION", "Start_X = End_X And Start_Y = End_Y", None)
         arcpy.management.CalculateField(param, "SEGMENT_ID", "!OBJECTID!", "PYTHON3", None)
+        arcpy.SelectLayerByAttribute_management(param, "CLEAR_SELECTION")
+
     return
 
 
@@ -164,16 +167,18 @@ def replace_no_slope_lines():
 
 
 def calculate_3d_attributes(lines_layer):
-    # Generate Points Along Lines
-    generate_points_along_lines(lines_layer)
-
-    # Split Lines at Points
-    arcpy.SplitLineAtPoint_management(lines_layer, lyr_points_split, lyr_output_feature_class, search_radius)
-    add_fields_or_calculate(calculate_field_z, lyr_output_feature_class)
 
     # Add SEGMENT_ID to circular lines
-    add_fields_or_calculate(add_circle_segment, lyr_output_feature_class)
-    add_fields_or_calculate(calculate_circle_segment, lyr_output_feature_class)
+    arcpy.MakeFeatureLayer_management(lines_layer, lyr_lines_select)
+    add_fields_or_calculate(add_circle_segment, lyr_lines_select)
+    add_fields_or_calculate(calculate_circle_segment, lyr_lines_select)
+
+    # Generate Points Along Lines
+    generate_points_along_lines(lyr_lines_select)
+
+    # Split Lines at Points
+    arcpy.SplitLineAtPoint_management(lyr_lines_select, lyr_points_split, lyr_output_feature_class, search_radius)
+    add_fields_or_calculate(calculate_field_z, lyr_output_feature_class)
 
     # Add Z Information
     arcpy.AddZInformation_3d(lyr_output_feature_class, "LENGTH_3D;AVG_SLOPE", "NO_FILTER")
@@ -192,55 +197,10 @@ def calculate_3d_attributes(lines_layer):
     return
 
 
-def split_circles_2(in_layer):
-    lyr_simplify = "in_memory\\lyr_simplify"
-    lyr_simplify_select = "in_memory\\lyr_simplify_select"
-    lyr_simplify_pts = "in_memory\\lyr_simplify_pts"
-    lyr_simplify_circles = "in_memory\\lyr_simplify_circles"
-    lyr_simplify_circles_pts = "in_memory\\lyr_simplify_circles_pts"
-    lyr_simplpify_circles_split = "in_memory\\lyr_simplpify_circles_split"
-    lyr_interpolted_shape = "in_memory\\lyr_interpolted_shape"
-
-    # Create midpoints for circular lines
-    arcpy.MakeFeatureLayer_management(in_layer, lyr_simplify_select)
-    arcpy.management.SelectLayerByAttribute(lyr_simplify_select, "NEW_SELECTION", "Start_X = End_X And Start_Y = End_Y", None)
-    arcpy.management.GeneratePointsAlongLines(lyr_simplify_select, lyr_simplify_pts, "PERCENTAGE", None, 50, None)
-    arcpy.management.SplitLineAtPoint(lyr_simplify_select, lyr_simplify_pts, lyr_simplify_circles, "0.001 Meters")
-    arcpy.management.AddField(lyr_simplify_circles, "SegmentID", "LONG", None, None, None, None, "NULLABLE", "NON_REQUIRED", None)
-    arcpy.management.CalculateField(lyr_simplify_circles, "SegmentID", "!OBJECTID!", "PYTHON3", None)
-    arcpy.management.GeneratePointsAlongLines(lyr_simplify_circles, lyr_simplify_circles_pts, "DISTANCE", "10 Meters", None, None)
-    arcpy.management.SplitLineAtPoint(lyr_simplify_circles, lyr_simplify_circles_pts, lyr_simplpify_circles_split, "0.001 Meters")
-    arcpy.ddd.InterpolateShape(param_in_raster, lyr_simplpify_circles_split, lyr_interpolted_shape, None, 1, "BILINEAR", "DENSIFY", 0, "EXCLUDE")
-    arcpy.management.CalculateField(lyr_interpolted_shape, "Avg_Slope", "(!shape.lastpoint.Z! - !shape.firstpoint.Z!)/!shape.length!", "PYTHON3", None)
-
-
-def split_circles():
-    lyr_simplify = "in_memory\\lyr_simplify"
-    lyr_simplify_select = "in_memory\\lyr_simplify_select"
-    lyr_simplify_pts = "in_memory\\lyr_simplify_pts"
-    lyr_simplify_circles = "in_memory\\lyr_simplify_circles"
-    lyr_simplify_circles_pts = "in_memory\\lyr_simplify_circles_pts"
-    lyr_simplpify_circles_split = "in_memory\\lyr_simplpify_circles_split"
-    lyr_interpolted_shape = "in_memory\\lyr_interpolted_shape"
-
-    # Create midpoints for circular lines
-    arcpy.MakeFeatureLayer_management(lyr_simplify, lyr_simplify_select)
-    arcpy.management.SelectLayerByAttribute(lyr_simplify_select, "NEW_SELECTION", "Start_X = End_X And Start_Y = End_Y", None)
-    arcpy.management.GeneratePointsAlongLines(lyr_simplify_select, lyr_simplify_pts, "PERCENTAGE", None, 50, None)
-    arcpy.management.SplitLineAtPoint(lyr_simplify_select, lyr_simplify_pts, lyr_simplify_circles, "0.001 Meters")
-    arcpy.management.AddField(lyr_simplify_circles, "SegmentID", "LONG", None, None, None, None, "NULLABLE", "NON_REQUIRED", None)
-    arcpy.management.CalculateField(lyr_simplify_circles, "SegmentID", "!OBJECTID!", "PYTHON3", None)
-    arcpy.management.GeneratePointsAlongLines(lyr_simplify_circles, lyr_simplify_circles_pts, "DISTANCE", "10 Meters", None, None)
-    arcpy.management.SplitLineAtPoint(lyr_simplify_circles, lyr_simplify_circles_pts, lyr_simplpify_circles_split, "0.001 Meters")
-    arcpy.ddd.InterpolateShape(param_in_raster, lyr_simplpify_circles_split, lyr_interpolted_shape, None, 1, "BILINEAR", "DENSIFY", 0, "EXCLUDE")
-    arcpy.management.CalculateField(lyr_interpolted_shape, "Avg_Slope", "(!shape.lastpoint.Z! - !shape.firstpoint.Z!)/!shape.length!", "PYTHON3", None)
-
-
-
 def simplify_and_generate_output():
 
     # Copy lines with slope to output layer -- avoid circular segments (those with SEGMENT_ID)
-    arcpy.SelectLayerByAttribute_management(lyr_output_feature_class_select, "NEW_SELECTION", "AVG_SLOPE <> 0 and SEGMENT_ID is not null")
+    arcpy.SelectLayerByAttribute_management(lyr_output_feature_class_select, "NEW_SELECTION", "AVG_SLOPE = 0 OR SEGMENT_ID is not null")
     arcpy.CopyFeatures_management(lyr_output_feature_class_select, param_out_network)
 
     # Dissolve and append non-sloped lines
@@ -268,26 +228,38 @@ def interpolate(params):
     # See if there are No_Split edges specified
     if param_has_no_split:
 
+        ''' Proceed to edges can be split'''
+
         # Process: Select edges that can be split
         arcpy.MakeFeatureLayer_management(lyr_interpolated_lines, lyr_lines_interpolate_select)
         arcpy.SelectLayerByAttribute_management(lyr_lines_interpolate_select, "NEW_SELECTION", query_no_slope, "INVERT")
+
+        # Process: Calculate value of Z for the lines that can be split
+        add_fields_or_calculate(calculate_field_z, lyr_lines_interpolate_select)
+
+        # Copy features from lines that can be split to a new feature class
         arcpy.CopyFeatures_management(lyr_lines_interpolate_select, lyr_lines_split)
 
-        # Process: Calc all 3D attributes
-        calculate_3d_attributes(lyr_lines_split)
+        ''' Proceed to edges cannot be split'''
 
         # Process: Select Layer By Attribute (edges cannot be split)
         arcpy.SelectLayerByAttribute_management(lyr_lines_interpolate_select, "SWITCH_SELECTION")
         arcpy.CopyFeatures_management(lyr_lines_interpolate_select, lyr_lines_nosplit)
 
-        # Process No_Split edges / Calculate value of Z
-        add_fields_or_calculate(calculate_field_z, lyr_lines_nosplit)
-
-        # Feature To 3D By Attribute for No_Split edges
+        # Process: Calculate 3D attributes for the lines that cannot be split
         arcpy.FeatureTo3DByAttribute_3d(lyr_lines_nosplit, lyr_lines_nosplit_3d, "Start_Z", "End_Z")
 
-        # Append split and no_split lines
-        arcpy.Append_management(lyr_lines_nosplit_3d, lyr_output_feature_class, "NO_TEST", "", "")
+        # Process Calculate value of Z for the lines that cannot be split
+        add_fields_or_calculate(calculate_field_z, lyr_lines_nosplit_3d)
+
+        ''' Combine both split and not split edges'''
+
+        # Append lines that cannot be split to lines that can be split
+        arcpy.Append_management(lyr_lines_nosplit_3d, lyr_lines_split, "NO_TEST", "", "")
+
+        # Process: Calculate 3D attributes for the lines that can be split
+        calculate_3d_attributes(lyr_lines_split)
+
         arcpy.AddMessage("Finished processing data with 'No Split' flag")
 
 
@@ -300,11 +272,11 @@ def interpolate(params):
     # Prepare output
     simplify_and_generate_output()
 
+    # End process
     delete_in_memory()
     check_in_extension()
     arcpy.AddMessage("Interpolation ended")
 
 if __name__ == "__main__":
-    # execute only if run as a script
+    # Execute only if run as standalone script
     interpolate(sys.argv)
-

@@ -25,7 +25,6 @@ class Network2DTo3D(object):
         self.canRunInBackground = True
         self.category = "3D Network Generation"
 
-        self
 
     def getParameterInfo(self):
         """Define parameter definitions"""

@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1d0be270-4e5b-41e4-a8ce-dc8c33b45ff3" name="Default Changelist" comment="Minor styling change">
+    <list default="true" id="1d0be270-4e5b-41e4-a8ce-dc8c33b45ff3" name="Default Changelist" comment="Allow ArcGIS Pro toolbox to be used. Minor bug fix to script.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Network2DTo3D.py" beforeDir="false" afterPath="$PROJECT_DIR$/Network2DTo3D.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Network3D.pyt" beforeDir="false" afterPath="$PROJECT_DIR$/Network3D.pyt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Network3D.pyt.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Network3D.pyt.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Network3DScript.py" beforeDir="false" afterPath="$PROJECT_DIR$/Network3DScript.py" afterDir="false" />
     </list>
     <list id="9bd209f7-b726-49f9-9931-1adf56f60d97" name="Minor styling change" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -13,12 +16,24 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Network2DTo3D.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="228">
-              <caret line="12" column="1" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
+            <state relative-caret-position="436">
+              <caret line="280" column="7" selection-start-line="280" selection-start-column="7" selection-end-line="280" selection-end-column="7" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Network3DScript.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="263">
+              <caret line="24" column="36" lean-forward="true" selection-start-line="24" selection-start-column="36" selection-end-line="24" selection-end-column="36" />
+              <folding>
+                <element signature="e#374#391#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -34,22 +49,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>temp_layer</find>
-      <find>AVG_SLOPE</find>
-      <find>SelectLayerByAttribute_management</find>
-      <find>nosplit_to3d</find>
-      <find>'yes'</find>
-      <find>no_slope</find>
-      <find>interpolate</find>
-      <find>output_feature_class_lyr</find>
-      <find>MakeFeatureLayer_management</find>
-      <find>lines_interpolate</find>
-      <find>lines_interpolate_lyr</find>
-      <find>lines_nosplit_lyr</find>
-      <find>lines</find>
-      <find>CalculateField</find>
-      <find>max</find>
-      <find>Max_Z</find>
       <find>SegmentID</find>
       <find>Start_X</find>
       <find>add_field_Z</find>
@@ -57,13 +56,29 @@
       <find>calculate_walktime_field</find>
       <find>lyr_output_feature_class</find>
       <find>lyr_interpolated</find>
-      <find>lyr_output_feature_class_select</find>
       <find>&quot;OSMnx_Walk_Add3D_Info&quot;</find>
       <find>search_radius</find>
       <find>lyr_interpolated_lines</find>
       <find>\\{0}\\</find>
       <find>add_split_circle</find>
       <find>add_circle_segment</find>
+      <find>lyr_lines_nosplit</find>
+      <find>lyr_lines_interpolate_select</find>
+      <find>arcpy.CopyFeatures_management</find>
+      <find>replace_no_slope_lines</find>
+      <find>query_no_slope</find>
+      <find>generate_point</find>
+      <find>generate_points_along_lines</find>
+      <find>simplify_and_generate_output</find>
+      <find>calculate_circle_segment</find>
+      <find>.format(timestamp)</find>
+      <find>calculate_3d_attributes</find>
+      <find>lyr_output_feature_class_select</find>
+      <find>lyr_lines_select</find>
+      <find>set_interpolation_params</find>
+      <find>interpolate</find>
+      <find>..interpolate</find>
+      <find>.interpolate</find>
     </findStrings>
     <replaceStrings>
       <replace>/</replace>
@@ -78,9 +93,9 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Network3D.pyt" />
         <option value="$PROJECT_DIR$/CollectDSMFromUsgs.py" />
         <option value="$PROJECT_DIR$/CollectDataFromOsm.py" />
+        <option value="$PROJECT_DIR$/Network3D.pyt" />
         <option value="$PROJECT_DIR$/Network3DScript.py" />
         <option value="$PROJECT_DIR$/Network2DTo3D.py" />
       </list>
@@ -98,8 +113,8 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="953" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-7" />
     <option name="width" value="974" />
     <option name="height" value="1047" />
   </component>
@@ -178,13 +193,13 @@
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="" />
+      <option name="SDK_HOME" value="C:\Users\Laggy\AppData\Local\ESRI\conda\envs\my_arcgispro-py3\python.exe" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
+      <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Network3DScript.py" />
-      <option name="PARAMETERS" value="'abcd' 1234" />
+      <option name="PARAMETERS" value="&quot;$PROJECT_DIR$/../3D_Networks_Project.gdb/HK_DTM_2m_Clip&quot; &quot;$PROJECT_DIR$/../3D_Networks_Project.gdb/OSMnx_Walk&quot; 10 True True &quot;$PROJECT_DIR$/../3D_Networks_Test.gdb/testoutput&quot;" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -222,7 +237,14 @@
       <option name="project" value="LOCAL" />
       <updated>1560160016672</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Minor styling change">
+      <created>1560160383429</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1560160383429</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TodoView">
@@ -235,23 +257,23 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-7" y="0" width="974" height="1047" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.5180328" visible="true" weight="0.28091684" />
-      <window_info id="Structure" order="1" sideWeight="0.4819672" side_tool="true" weight="0.28118163" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.5118859" visible="true" weight="0.3129103" />
+      <window_info id="Structure" order="1" sideWeight="0.48811412" side_tool="true" visible="true" weight="0.3129103" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.33260393" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.37811485" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49840087" weight="0.4301192" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.309628" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49840087" weight="0.43435448" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.329718" />
-      <window_info anchor="bottom" id="Version Control" order="7" visible="true" weight="0.32936078" />
-      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.4989339" weight="0.329718" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.32936078" />
+      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.4989339" weight="0.32936078" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50159913" side_tool="true" weight="0.324295" />
-      <window_info anchor="bottom" id="Python Console" order="10" sideWeight="0.49946696" weight="0.3286334" />
+      <window_info anchor="bottom" id="Python Console" order="10" sideWeight="0.49946696" weight="0.32827735" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -329,36 +351,44 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/Network3D.pyt</url>
-          <line>148</line>
+          <line>147</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/Network2DTo3D.py</url>
-          <line>300</line>
-          <option name="timeStamp" value="2" />
+          <line>67</line>
+          <option name="timeStamp" value="34" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/Network2DTo3D.py</url>
-          <line>184</line>
-          <option name="timeStamp" value="19" />
+          <line>281</line>
+          <option name="timeStamp" value="36" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Network2DTo3D.py</url>
-          <line>181</line>
-          <option name="timeStamp" value="24" />
+          <url>file://$PROJECT_DIR$/Network3DScript.py</url>
+          <line>25</line>
+          <option name="timeStamp" value="38" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
-        <watch expression="sys.argv" language="Python" />
-        <watch expression="sys.argv[1:3]" language="Python" />
-        <watch expression="param_in_raster" language="Python" />
+        <watch expression="sys.argv[1:7]" language="Python" />
       </configuration>
     </watches-manager>
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="watch">
+      <expression>
+        <expression-string>sys.argv[1:7]</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>sys.argv[1:6]</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
       <expression>
         <expression-string>param_in_raster</expression-string>
         <language-id>Python</language-id>
@@ -402,13 +432,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Network3D.pyt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="81">
-          <caret line="190" column="70" selection-start-line="190" selection-start-column="65" selection-end-line="190" selection-end-column="70" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/CollectDataFromOsm.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -430,34 +453,64 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://C:/Program Files/ArcGIS/Pro/Resources/ArcPy/arcpy/management.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="159">
+          <caret line="3938" selection-start-line="3938" selection-end-line="3938" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydev_imps/_pydev_execfile.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="17" column="28" lean-forward="true" selection-start-line="17" selection-start-column="28" selection-end-line="17" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://C:/Program Files/ArcGIS/Pro/Resources/ArcPy/arcpy/ddd.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="181">
-          <caret line="62" column="4" selection-start-line="62" selection-start-column="4" selection-end-line="62" selection-end-column="4" />
+        <state relative-caret-position="167">
+          <caret line="278" column="4" selection-start-line="278" selection-start-column="4" selection-end-line="278" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Network3D.Network2DTo3D.pyt.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="38">
+          <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/New Python Toolbox.pyt.xml" />
+    <entry file="file://$PROJECT_DIR$/New Python Toolbox.pyt" />
+    <entry file="file://$PROJECT_DIR$/Network3D.pyt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="18" column="28" lean-forward="true" selection-start-line="18" selection-start-column="28" selection-end-line="18" selection-end-column="28" />
+          <folding>
+            <element signature="e#2745#3071#0" />
+            <element signature="e#3364#3518#0" />
+            <element signature="e#3561#3648#0" />
+            <element signature="e#3690#3775#0" />
+            <element signature="e#3815#4336#0" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Network3DScript.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret line="26" column="32" lean-forward="true" selection-start-line="26" selection-start-column="32" selection-end-line="26" selection-end-column="32" />
+        <state relative-caret-position="263">
+          <caret line="24" column="36" lean-forward="true" selection-start-line="24" selection-start-column="36" selection-end-line="24" selection-end-column="36" />
           <folding>
             <element signature="e#374#391#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://C:/Program Files/ArcGIS/Pro/Resources/ArcPy/arcpy/management.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-232">
-          <caret line="2589" column="4" selection-start-line="2589" selection-start-column="4" selection-end-line="2589" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Network2DTo3D.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="12" column="1" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
+        <state relative-caret-position="436">
+          <caret line="280" column="7" selection-start-line="280" selection-start-column="7" selection-end-line="280" selection-end-column="7" />
         </state>
       </provider>
     </entry>
