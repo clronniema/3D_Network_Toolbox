@@ -1,50 +1,83 @@
+# --------------------------------
+# Name:        CollectDataFromOsm.py
+# Purpose:
+# Author: Christopher D. Higgins
+# Institution: The Hong Kong Polytechnic University
+# Department: Department of Land Surveying and Geo-Informatics
+# Created     14/06/2019
+# ArcGIS Version:   ArcGIS Pro 2.3.3
+# Python Version:   3.6
+# License:
+#
+#
+# Using this:
+#
+#  1) Call this as a script
+#     python <...CollectDataFromOsm.py> <cities_json_path> <folder_path>
+#     Example:
+#     python CollectDataFromOsm.py cities.json '\\data'
+#
+#  2) Import script and pass parameters
+#     import Network2DTo3D
+#     Network2DTo3D.download(cities_json_path)
+#
+
+# --------------------------------
 
 import osmnx as ox
-import geopandas as gpd
-import networkx as nx
-import matplotlib.cm as cm
-import matplotlib.colors as colors
-import pandas as pd
-import numpy as np
-import requests
-import CitiesList
+import json
+import sys
 
-def printMsg(msg):
-    print("CollectDataFromOsm msg: {0}".format(msg))
+param_cities_json = None
+param_folder_path = None
 
 
-def collect_data(cities_list):
+def collect_data(cities_list_json, param_folder_path):
+    # Set print osm default logs
     ox.config(log_file=True, log_console=True, use_cache=True)
 
-    for city_array in cities_list:
-        city_osm_name = city_array[0]
-        city_raster_name = city_array[1] + ""
-        city_network_name = "network_{0}.shp".format(city_array[1])
-        city_bound_name = "boundary_{0}.shp".format(city_array[1])
 
-        # gdf is a geopandas GeoDataFrame
-        city = ox.gdf_from_place('Hong Kong, Hong Kong')
-        #fig, ax = ox.plot_shape(city, figsize=(3, 3))
+    # Loop through json file
+    cities_list = cities_list_json["cities"]
+    for city in cities_list.keys():
+        city_name = city.replace(" ", "_")
+        city_places = cities_list[city]
 
-        # now use the city polygon to extract streets from OSM
-        # the projection will take some time - can leave it running and do something else
-        city_polygon = city['geometry'].iloc[0]
-        G4 = ox.graph_from_polygon(city_polygon, network_type='walk')
-        #G4_projected = ox.project_graph(G4)
+        city_network_name = "osm_{0}".format(city_name)
+        city_bound_name = "osm_{0}".format(city_name)
 
-        #fig, ax = ox.plot_graph(G4_projected)
+        # Collect boundaries using city name (or place name)
+        # Save city boundaries as shapefile
+        city_gdf = ox.gdf_from_place(city_name)
+        ox.save_gdf_shapefile(city_gdf, filename=city_bound_name, folder=param_folder_path)
 
-        # save the Hong Kong boundary polygon as a shapefile
-        ox.save_gdf_shapefile(city_polygon, folder='D:\\workspace\\network_toolbox\\3D_Networks_Project\\3D_Network_TestFolder\\data', filename=city_bound_name)
-        # Save the Hong Kong street network as ESRI shapefile to work with in GIS
-        ox.save_graph_shapefile(G4, folder='D:\\workspace\\network_toolbox\\3D_Networks_Project\\3D_Network_TestFolder\\data', filename=city_network_name)
+        # Collect network using place names
+        # Using retain_all to keep disconnected networks, ie HK Island and Kowloon and Lantau
+        # Save network as shapefile
+        G = ox.graph_from_place(city_places, network_type='walk', retain_all=True)
+        ox.save_graph_shapefile(G, filename=city_network_name, folder=param_folder_path)
 
 
-def read_cities_list():
-    return CitiesList.cities
+def read_cities_list(cities_json_path):
+    # Read JSON data
+    if cities_json_path:
+        with open(cities_json_path, 'r') as f:
+            return json.load(f)
+
+
+def download_data(params):
+
+    # Could be called from outside
+    # Main workflow for downloading data
+    global param_cities_json, param_folder_path
+    param_cities_json = params[0]
+    param_folder_path = params[1]
+
+    cities_list_json = read_cities_list(param_cities_json)
+    collect_data(cities_list_json, param_folder_path)
 
 
 if __name__ == "__main__":
-    # Execute only if run as standalone script
-    cities_list = read_cities_list()
-    collect_data(cities_list)
+    # Execute through this only if run as standalone script
+    download_data(sys.argv[1:3])
+

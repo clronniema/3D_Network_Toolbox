@@ -22,8 +22,8 @@ def run_main_workflow(*argv):
     #try:
         arcpy.AddMessage("run main workflow")
         CollectDSMFromUsgs.printMsg("CollectDSMFromUsgs")
-        CollectDataFromOsm.printMsg("CollectDataFromOsm")
-        Network2DTo3D.interpolate(sys.argv[1:7])
+        CollectDataFromOsm.download_data(sys.argv[1:3])
+        Network2DTo3D.interpolate(sys.argv[3:9])
         arcpy.AddMessage("done")
     #pass
     # except arcpy.ExecuteError:

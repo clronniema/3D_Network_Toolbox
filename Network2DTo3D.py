@@ -11,16 +11,28 @@
 # License:
 #
 #
-#  Using this:
+# Using this:
+#
+# Parameters to input:
+# 1 - param_in_raster (String) - Path to raster file
+# 2 - param_in_network (String) - Path to OSM road network
+# 3 - param_sample_distance (Numeric) - Sampling radius for roads to split
+# 4 - param_has_no_split_edges (Boolean) - There are edges that cannot be split, such as bridges
+# 5 - param_has_no_slope_edges (Boolean) - There are edges that has edges that are not slopes
+# 6 - param_out_network (String) - Path to output network file
 #
 #  1) Call this as a script
-#     i.e. python Network2DTo3D param1 param2...
+#     python <...Network2DTo3D.py> <param_in_raster> <param_in_network>  <param_sample_distance> <param_has_no_split_edges> <param_has_no_slope_edges> <param_out_network>
+#     Example:
+#     python Network2DTo3D.py "OSMnx_Walk" 10 True True "Output_Network"
 #
 #  2) Import script and pass parameters
 #     import Network2DTo3D
 #     Network2DTo3D.interpolate(sys.argv[n:m])
 #
+
 # --------------------------------
+
 
 # imports
 import arcpy
@@ -38,8 +50,8 @@ timestamp = date_time_obj.strftime("%H%M%S")
 param_in_raster = None
 param_in_network = None
 param_sample_distance = None
-param_has_no_split = None
-param_has_no_slope = None
+param_has_no_split_edges = None
+param_has_no_slope_edges = None
 param_out_network = None
 
 # temporary file names
@@ -70,15 +82,15 @@ def get_current_timestamp_str():
 
 def set_interpolation_params(params=None):
     # Retrieve user entered parameters
-    global param_in_raster, param_in_network, param_sample_distance, param_has_no_split, param_has_no_slope, param_out_network
+    global param_in_raster, param_in_network, param_sample_distance, param_has_no_split_edges, param_has_no_slope_edges, param_out_network
     if params is None:
         params = sys.argv
 
     param_in_raster = params[0]
     param_in_network = params[1]
     param_sample_distance = params[2]
-    param_has_no_split = params[3]
-    param_has_no_slope = params[4]
+    param_has_no_split_edges = params[3]
+    param_has_no_slope_edges = params[4]
     param_out_network = params[5] + "_" + timestamp
 
     #Parameters for testing only
@@ -170,7 +182,7 @@ def add_fields_or_calculate(case, param=None):
 
 
 def replace_no_slope_edges():
-    if param_has_no_slope:
+    if param_has_no_slope_edges:
         arcpy.SelectLayerByAttribute_management(lyr_output_feature_class_select, "NEW_SELECTION", query_no_slope)
         arcpy.CalculateFields_management(lyr_output_feature_class_select, "PYTHON3", "FT_MIN_3D !FT_MIN_2D!;TF_MIN_3D !TF_MIN_2D!", None)
 
@@ -237,7 +249,7 @@ def interpolate(params):
         add_fields_or_calculate(add_field_Z, lyr_interpolated_lines)
 
         # See if there are No_Split edges specified
-        if param_has_no_split:
+        if param_has_no_split_edges:
 
             ''' Proceed to edges can be split'''
 

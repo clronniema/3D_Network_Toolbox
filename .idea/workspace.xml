@@ -2,10 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1d0be270-4e5b-41e4-a8ce-dc8c33b45ff3" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/CitiesList.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cities.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CitiesList.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/CollectDataFromOsm.py" beforeDir="false" afterPath="$PROJECT_DIR$/CollectDataFromOsm.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Network2DTo3D.py" beforeDir="false" afterPath="$PROJECT_DIR$/Network2DTo3D.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Network3DScript.py" beforeDir="false" afterPath="$PROJECT_DIR$/Network3DScript.py" afterDir="false" />
     </list>
     <list id="9bd209f7-b726-49f9-9931-1adf56f60d97" name="Minor styling change" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -17,46 +19,13 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Network2DTo3D.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="177">
-              <caret line="71" column="38" lean-forward="true" selection-start-line="71" selection-start-column="38" selection-end-line="71" selection-end-column="38" />
-              <folding>
-                <element signature="e#598#610#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Network3DScript.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="160">
-              <caret line="25" column="27" lean-forward="true" selection-start-line="25" selection-start-column="27" selection-end-line="25" selection-end-column="27" />
-              <folding>
-                <element signature="e#374#391#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/CollectDataFromOsm.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="304">
-              <caret line="37" column="128" selection-start-line="37" selection-start-column="128" selection-end-line="37" selection-end-column="128" />
+            <state relative-caret-position="353">
+              <caret line="79" column="26" lean-forward="true" selection-start-line="79" selection-start-column="26" selection-end-line="79" selection-end-column="26" />
               <folding>
-                <element signature="e#1#19#0" expanded="true" />
+                <element signature="e#675#693#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/CitiesList.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="57">
-              <caret line="3" column="38" selection-start-line="3" selection-start-column="38" selection-end-line="3" selection-end-column="38" />
             </state>
           </provider>
         </entry>
@@ -72,12 +41,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>add_field_Z</find>
-      <find>TF_MIN_3D</find>
-      <find>calculate_walktime_field</find>
-      <find>lyr_output_feature_class</find>
-      <find>lyr_interpolated</find>
-      <find>&quot;OSMnx_Walk_Add3D_Info&quot;</find>
       <find>search_radius</find>
       <find>lyr_interpolated_lines</find>
       <find>\\{0}\\</find>
@@ -102,6 +65,12 @@
       <find>generate_points_along_lines</find>
       <find>&quot;</find>
       <find>arcpy.</find>
+      <find>append</find>
+      <find>save_gdf_shapefile</find>
+      <find>saved graph &quot;{}</find>
+      <find>G_save</find>
+      <find>graph_from_place</find>
+      <find>param_folder_path</find>
     </findStrings>
     <replaceStrings>
       <replace>/</replace>
@@ -119,15 +88,16 @@
       <list>
         <option value="$PROJECT_DIR$/CollectDSMFromUsgs.py" />
         <option value="$PROJECT_DIR$/Network3D.pyt" />
-        <option value="$PROJECT_DIR$/Network3DScript.py" />
-        <option value="$PROJECT_DIR$/CitiesList.py" />
-        <option value="$PROJECT_DIR$/CollectDataFromOsm.py" />
         <option value="$PROJECT_DIR$/Network2DTo3D.py" />
+        <option value="$PROJECT_DIR$/CitiesList.py" />
+        <option value="$PROJECT_DIR$/Network3DScript.py" />
+        <option value="$PROJECT_DIR$/CollectDataFromOsm.py" />
+        <option value="$PROJECT_DIR$/cities.json" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="953" />
+    <option name="x" value="-7" />
     <option name="width" value="974" />
     <option name="height" value="1047" />
   </component>
@@ -177,7 +147,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.Network2DTo3D">
+  <component name="RunManager" selected="Python.CollectDataFromOsm">
     <configuration name="CollectDataFromOsm" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="3D_Network_Toolbox" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -191,7 +161,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/CollectDataFromOsm.py" />
-      <option name="PARAMETERS" value="" />
+      <option name="PARAMETERS" value="cities.json &quot;$PROJECT_DIR$/../3D_Network_TestFolder/data&quot;" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -212,7 +182,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Network2DTo3D.py" />
-      <option name="PARAMETERS" value="&quot;$PROJECT_DIR$/../3D_Networks_Project.gdb/HK_DTM_2m_Clip&quot; &quot;$PROJECT_DIR$/../3D_Networks_Project.gdb/OSMnx_Walk&quot; 10 True True &quot;$PROJECT_DIR$/../3D_Networks_Test.gdb/testoutput&quot;" />
+      <option name="PARAMETERS" value="cities.json 'D:\\workspace\\network_toolbox\\3D_Networks_Project\\3D_Network_TestFolder\\data' &quot;$PROJECT_DIR$/../3D_Networks_Project.gdb/HK_DTM_2m_Clip&quot; &quot;$PROJECT_DIR$/../3D_Networks_Project.gdb/OSMnx_Walk&quot; 10 True True &quot;$PROJECT_DIR$/../3D_Networks_Test.gdb/testoutput&quot;" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -248,8 +218,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.Network2DTo3D" />
         <item itemvalue="Python.CollectDataFromOsm" />
+        <item itemvalue="Python.Network2DTo3D" />
         <item itemvalue="Python.Network3DScript" />
       </list>
     </recent_temporary>
@@ -297,7 +267,14 @@
       <option name="project" value="LOCAL" />
       <updated>1560238901409</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Minor bug fix">
+      <created>1560245196573</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1560245196573</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TodoView">
@@ -313,13 +290,13 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.5124283" visible="true" weight="0.17803837" />
-      <window_info id="Structure" order="1" sideWeight="0.48757172" side_tool="true" visible="true" weight="0.17803837" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.5076142" visible="true" weight="0.11886994" />
+      <window_info id="Structure" order="1" sideWeight="0.49238577" side_tool="true" weight="0.11886994" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.33152762" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.45070422" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" sideWeight="0.49840087" visible="true" weight="0.43336946" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.35969663" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49840087" weight="0.43336946" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.329718" />
@@ -399,7 +376,8 @@
     <MESSAGE value="Minor styling change" />
     <MESSAGE value="Minor bug fix to script - removing toolbox part of code (TBD)" />
     <MESSAGE value="Minor styling changes and basic exception handling" />
-    <option name="LAST_COMMIT_MESSAGE" value="Minor styling changes and basic exception handling" />
+    <MESSAGE value="Minor bug fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="Minor bug fix" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -415,37 +393,65 @@
           <option name="timeStamp" value="38" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Network2DTo3D.py</url>
-          <line>292</line>
-          <option name="timeStamp" value="39" />
+          <url>file://$USER_HOME$/AppData/Local/ESRI/conda/envs/my_arcgispro-py3/Lib/site-packages/osmnx/save_load.py</url>
+          <line>143</line>
+          <option name="timeStamp" value="48" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Network2DTo3D.py</url>
-          <line>73</line>
-          <option name="timeStamp" value="40" />
+          <url>file://$PROJECT_DIR$/CollectDataFromOsm.py</url>
+          <line>75</line>
+          <option name="timeStamp" value="61" />
         </line-breakpoint>
       </breakpoints>
+      <default-breakpoints>
+        <breakpoint type="python-exception">
+          <properties notifyOnTerminate="true" exception="BaseException">
+            <option name="notifyOnTerminate" value="true" />
+          </properties>
+        </breakpoint>
+      </default-breakpoints>
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
-        <watch expression="sys.argv[1:7]" language="Python" />
+        <watch expression="param_cities_json" language="Python" />
+        <watch expression="param_folder_path" language="Python" />
       </configuration>
     </watches-manager>
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="watch">
       <expression>
-        <expression-string>sys.argv[1:7]</expression-string>
+        <expression-string>param_folder_path</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>sys.argv[1:6]</expression-string>
+        <expression-string>param_cities_json</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>param_in_raster</expression-string>
+        <expression-string>city</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>cities_list</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>cities_list[city]</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>cities_list[&quot;cities&quot;].</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>cities_list[&quot;cities&quot;]</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
@@ -455,17 +461,7 @@
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>argv[1:2]</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>sys.argv</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>param_in_network</expression-string>
+        <expression-string>city_bound_name</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
@@ -531,53 +527,95 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/New Python Toolbox.pyt.xml" />
     <entry file="file://$PROJECT_DIR$/New Python Toolbox.pyt" />
+    <entry file="file://$USER_HOME$/AppData/Local/ESRI/conda/envs/my_arcgispro-py3/Lib/site-packages/osmnx/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#390#409#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/ESRI/conda/envs/my_arcgispro-py3/Lib/site-packages/pandas/core/generic.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="188">
+          <caret line="1477" selection-start-line="1477" selection-end-line="1477" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/ESRI/conda/envs/my_arcgispro-py3/Lib/site-packages/osmnx/plot.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="158">
+          <caret line="68" selection-start-line="68" selection-end-line="68" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Network3D.pyt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="342">
           <caret line="18" column="28" lean-forward="true" selection-start-line="18" selection-start-column="28" selection-end-line="18" selection-end-column="28" />
-          <folding>
-            <element signature="e#2745#3071#0" />
-            <element signature="e#3364#3518#0" />
-            <element signature="e#3561#3648#0" />
-            <element signature="e#3690#3775#0" />
-            <element signature="e#3815#4336#0" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/CitiesList.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="57">
-          <caret line="3" column="38" selection-start-line="3" selection-start-column="38" selection-end-line="3" selection-end-column="38" />
+        <state relative-caret-position="190">
+          <caret line="10" column="1" lean-forward="true" selection-end-line="10" selection-end-column="1" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CollectDataFromOsm.py">
+    <entry file="file://$USER_HOME$/AppData/Local/ESRI/conda/envs/my_arcgispro-py3/Lib/site-packages/osmnx/core.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="37" column="128" selection-start-line="37" selection-start-column="128" selection-end-line="37" selection-end-column="128" />
+        <state relative-caret-position="147">
+          <caret line="1795" column="20" selection-start-line="1795" selection-start-column="4" selection-end-line="1795" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Network2DTo3D.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="214">
+          <caret line="298" column="26" lean-forward="true" selection-start-line="298" selection-start-column="26" selection-end-line="298" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/ESRI/conda/envs/my_arcgispro-py3/Lib/site-packages/osmnx/save_load.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1754">
+          <caret line="146" column="38" lean-forward="true" selection-start-line="146" selection-start-column="38" selection-end-line="146" selection-end-column="38" />
           <folding>
-            <element signature="e#1#19#0" expanded="true" />
+            <element signature="e#5169#8003#0" />
+            <element signature="e#8083#10513#0" />
+            <element signature="e#10576#14409#0" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/ESRI/conda/envs/my_arcgispro-py3/Lib/os.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="158">
+          <caret line="209" selection-start-line="209" selection-end-line="209" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cities.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/Network3DScript.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="25" column="27" lean-forward="true" selection-start-line="25" selection-start-column="27" selection-end-line="25" selection-end-column="27" />
+        <state relative-caret-position="209">
+          <caret line="20" column="21" lean-forward="true" selection-start-line="20" selection-start-column="21" selection-end-line="20" selection-end-column="21" />
           <folding>
             <element signature="e#374#391#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Network2DTo3D.py">
+    <entry file="file://$PROJECT_DIR$/CollectDataFromOsm.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="177">
-          <caret line="71" column="38" lean-forward="true" selection-start-line="71" selection-start-column="38" selection-end-line="71" selection-end-column="38" />
+        <state relative-caret-position="353">
+          <caret line="79" column="26" lean-forward="true" selection-start-line="79" selection-start-column="26" selection-end-line="79" selection-end-column="26" />
           <folding>
-            <element signature="e#598#610#0" expanded="true" />
+            <element signature="e#675#693#0" expanded="true" />
           </folding>
         </state>
       </provider>
