@@ -11,27 +11,55 @@
 # License:
 # --------------------------------
 
-import arcpy, sys
+import arcpy
+import sys
+import json
 import CollectDSMFromUsgs, CollectDataFromOsm, Network2DTo3D
 
 __version__ = "0.1"
+
+
+def collect_data(cities_list_json, param_folder_path):
+
+    # Loop through json file
+    cities_list = cities_list_json["cities"]
+    for city in cities_list.keys():
+        city_name = city.replace(" ", "_")
+        city_places = cities_list[city]
+        CollectDataFromOsm.collect_data_per_city(city_name, city_places, param_folder_path)
+
+        # Pass parameters to interpolate, add parameter of location name
+        params_to_interpolate = sys.argv[3:10]
+        params_to_interpolate.append(city_name)
+        Network2DTo3D.interpolate(params_to_interpolate, False)
+
+
+def read_cities_list(cities_json_path):
+
+    global param_cities_json, param_folder_path
+    param_cities_json = sys.argv[1]
+    param_folder_path = sys.argv[2]
+
+    # Read JSON data
+    if cities_json_path:
+        with open(cities_json_path, 'r') as f:
+            return json.load(f)
+
 
 def run_main_workflow(*argv):
 
     if check_input():
     #try:
         arcpy.AddMessage("run main workflow")
-        CollectDSMFromUsgs.printMsg("CollectDSMFromUsgs")
-        CollectDataFromOsm.download_data(sys.argv[1:3])
-        Network2DTo3D.interpolate(sys.argv[3:9])
+
+        param_cities_json = sys.argv[1]
+        param_folder_path = sys.argv[2]
+
+        cities_list_json = read_cities_list(param_cities_json)
+        collect_data(cities_list_json, param_folder_path)
+
         arcpy.AddMessage("done")
-    #pass
-    # except arcpy.ExecuteError:
-    #     arcpy.AddError(arcpy.GetMessages(2))
-    #     print(arcpy.GetMessages(2))
-    # except Exception as e:
-    #     arcpy.AddError(e.args[0])
-    #     print(e.args[0])
+
 
 
 def check_input():

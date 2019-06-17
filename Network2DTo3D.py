@@ -13,18 +13,27 @@
 #
 # Using this:
 #
-# Parameters to input:
-# 1 - param_in_raster (String) - Path to raster file
-# 2 - param_in_network (String) - Path to OSM road network
+# [Standalone] Parameters to input:
+# 1 - param_in_network (String) - Path to OSM road network
+# 2 - param_in_raster (String) - Path to raster file
 # 3 - param_sample_distance (Numeric) - Sampling radius for roads to split
 # 4 - param_has_no_split_edges (Boolean) - There are edges that cannot be split, such as bridges
 # 5 - param_has_no_slope_edges (Boolean) - There are edges that has edges that are not slopes
 # 6 - param_out_network (String) - Path to output network file
 #
+# [With Network3DScript] Parameters to input:
+# 1 - param_in_network (String) - Path to OSM road network data folder
+# 2 - param_in_raster (String) - Path to raster folder
+# 3 - param_sample_distance (Numeric) - Sampling radius for roads to split
+# 4 - param_has_no_split_edges (Boolean) - There are edges that cannot be split, such as bridges
+# 5 - param_has_no_slope_edges (Boolean) - There are edges that has edges that are not slopes
+# 6 - param_out_network (String) - Path to output network folder
+# 7 - param_location_save_name (String) - Name of location to save as  (provided from Network3DScript)
+#
 #  1) Call this as a script
-#     python <...Network2DTo3D.py> <param_in_raster> <param_in_network>  <param_sample_distance> <param_has_no_split_edges> <param_has_no_slope_edges> <param_out_network>
+#     python <...Network2DTo3D.py> <param_in_network> <param_in_raster> <param_sample_distance> <param_has_no_split_edges> <param_has_no_slope_edges> <param_out_network>
 #     Example:
-#     python Network2DTo3D.py "OSMnx_Walk" 10 True True "Output_Network"
+#     python Network2DTo3D.py "OSMnx_Walk" "HK_DTM_2m_Clip" 10 True True "Output_Network"
 #
 #  2) Import script and pass parameters
 #     import Network2DTo3D
@@ -53,6 +62,7 @@ param_sample_distance = None
 param_has_no_split_edges = None
 param_has_no_slope_edges = None
 param_out_network = None
+param_location_save_name = None
 
 # temporary file names
 lyr_lines_split = 'in_memory\\lyr_lines_split'
@@ -80,24 +90,36 @@ def get_current_timestamp_str():
     return date_time.strftime("%m/%d/%Y %H:%M:%S")
 
 
-def set_interpolation_params(params=None):
+def set_interpolation_params(params, standalone=False):
     # Retrieve user entered parameters
-    global param_in_raster, param_in_network, param_sample_distance, param_has_no_split_edges, param_has_no_slope_edges, param_out_network
+    global param_in_raster, param_in_network, param_sample_distance, param_has_no_split_edges, param_has_no_slope_edges, param_out_network, param_location_save_name
     if params is None:
         params = sys.argv
 
-    param_in_raster = params[0]
-    param_in_network = params[1]
-    param_sample_distance = params[2]
-    param_has_no_split_edges = params[3]
-    param_has_no_slope_edges = params[4]
-    param_out_network = params[5] + "_" + timestamp
+
+
+
+    if standalone:
+        param_in_network = params[0]
+        param_in_raster = params[1]
+        param_sample_distance = params[2]
+        param_has_no_split_edges = params[3]
+        param_has_no_slope_edges = params[4]
+        param_out_network = params[5] + "_" + timestamp
+    else:
+        param_location_save_name = params[6]
+        param_in_network = "{0}/data/osm_{1}/edges/edges.shp".format(params[0], param_location_save_name)
+        param_in_raster = "{0}/data/raster/{1}.shp".format(params[1], param_location_save_name)
+        param_sample_distance = params[2]
+        param_has_no_split_edges = params[3]
+        param_has_no_slope_edges = params[4]
+        param_out_network = "{0}/output/network/{1}.shp".format(params[5])
 
     #Parameters for testing only
 
     '''
-    param_in_raster = "D:/workspace/network_toolbox/3D_Networks_Project/3D_Networks_Project.gdb/" + "HK_DTM_2m_Clip"
     param_in_network = "D:/workspace/network_toolbox/3D_Networks_Project/3D_Networks_Project.gdb/" + "OSMnx_Walk"
+    param_in_raster = "D:/workspace/network_toolbox/3D_Networks_Project/3D_Networks_Project.gdb/" + "HK_DTM_2m_Clip"
     param_sample_distance = float('10')
     param_has_no_split = True
     param_has_no_slope = True
@@ -230,7 +252,7 @@ def simplify_and_generate_output():
     arcpy.Append_management(lyr_dissolved_lines, param_out_network, "NO_TEST", "", "")
 
 
-def interpolate(params):
+def interpolate(params, standalone=False):
 
     try:
 
@@ -240,7 +262,7 @@ def interpolate(params):
         check_out_extension()
 
         # Set parameters
-        set_interpolation_params(params)
+        set_interpolation_params(params, standalone)
 
         # Process: Interpolate Shape
         arcpy.InterpolateShape_3d(param_in_raster, param_in_network, lyr_interpolated_lines, "", "1", "BILINEAR", "DENSIFY", "0")

@@ -32,37 +32,40 @@ param_cities_json = None
 param_folder_path = None
 
 
-def collect_data(cities_list_json, param_folder_path):
-    # Set print osm default logs
-    ox.config(log_file=True, log_console=True, use_cache=True)
+def read_cities_list(cities_json_path):
+    # Read JSON data
+    if cities_json_path:
+        with open(cities_json_path, 'r') as f:
+            return json.load(f)
 
+
+def collect_data(cities_list_json, param_folder_path):
 
     # Loop through json file
     cities_list = cities_list_json["cities"]
     for city in cities_list.keys():
         city_name = city.replace(" ", "_")
         city_places = cities_list[city]
-
-        city_network_name = "osm_{0}".format(city_name)
-        city_bound_name = "osm_{0}".format(city_name)
-
-        # Collect boundaries using city name (or place name)
-        # Save city boundaries as shapefile
-        city_gdf = ox.gdf_from_place(city_name)
-        ox.save_gdf_shapefile(city_gdf, filename=city_bound_name, folder=param_folder_path)
-
-        # Collect network using place names
-        # Using retain_all to keep disconnected networks, ie HK Island and Kowloon and Lantau
-        # Save network as shapefile
-        G = ox.graph_from_place(city_places, network_type='walk', retain_all=True)
-        ox.save_graph_shapefile(G, filename=city_network_name, folder=param_folder_path)
+        collect_data_per_city(city_name, city_places, param_folder_path)
 
 
-def read_cities_list(cities_json_path):
-    # Read JSON data
-    if cities_json_path:
-        with open(cities_json_path, 'r') as f:
-            return json.load(f)
+def collect_data_per_city(city_name, city_places, param_folder_path):
+    # Set print osm default logs
+    ox.config(log_file=True, log_console=True, use_cache=True)
+
+    city_network_name = "osm_{0}".format(city_name)
+    city_bound_name = "osm_{0}".format(city_name)
+
+    # Collect boundaries using city name (or place name)
+    # Save city boundaries as shapefile
+    city_gdf = ox.gdf_from_place(city_name)
+    ox.save_gdf_shapefile(city_gdf, filename=city_bound_name, folder=param_folder_path)
+
+    # Collect network using place names
+    # Using retain_all to keep disconnected networks, ie HK Island and Kowloon and Lantau
+    # Save network as shapefile
+    G = ox.graph_from_place(city_places, network_type='walk', retain_all=True)
+    ox.save_graph_shapefile(G, filename=city_network_name, folder=param_folder_path)
 
 
 def download_data(params):
