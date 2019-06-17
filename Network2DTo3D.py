@@ -96,9 +96,6 @@ def set_interpolation_params(params, standalone=False):
     if params is None:
         params = sys.argv
 
-
-
-
     if standalone:
         param_in_network = params[0]
         param_in_raster = params[1]
@@ -109,11 +106,11 @@ def set_interpolation_params(params, standalone=False):
     else:
         param_location_save_name = params[6]
         param_in_network = "{0}/data/osm_{1}/edges/edges.shp".format(params[0], param_location_save_name)
-        param_in_raster = "{0}/data/raster/{1}.shp".format(params[1], param_location_save_name)
+        param_in_raster = "{0}/data/raster/{1}".format(params[1], param_location_save_name)
         param_sample_distance = params[2]
         param_has_no_split_edges = params[3]
         param_has_no_slope_edges = params[4]
-        param_out_network = "{0}/output/network/{1}.shp".format(params[5])
+        param_out_network = "{0}/output/network/{1}.shp".format(params[5], param_location_save_name)
 
     #Parameters for testing only
 

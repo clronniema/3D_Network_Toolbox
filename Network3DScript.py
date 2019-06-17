@@ -19,27 +19,31 @@ import CollectDSMFromUsgs, CollectDataFromOsm, Network2DTo3D
 __version__ = "0.1"
 
 
+def replace_vowel(original_word):
+    vowels = "aeiou "
+    new_word = ""
+    for letter in original_word:
+        if letter not in vowels:
+            new_word += (letter.lower())
+    return new_word
+
+
 def collect_data(cities_list_json, param_folder_path):
 
     # Loop through json file
     cities_list = cities_list_json["cities"]
-    for city in cities_list.keys():
-        city_name = city.replace(" ", "_")
-        city_places = cities_list[city]
-        CollectDataFromOsm.collect_data_per_city(city_name, city_places, param_folder_path)
+    for city_name in cities_list.keys():
+        city_save_name = replace_vowel(city_name)
+        city_places = cities_list[city_name]
+        CollectDataFromOsm.collect_data_per_city(city_name, city_save_name, city_places, param_folder_path)
 
         # Pass parameters to interpolate, add parameter of location name
-        params_to_interpolate = sys.argv[3:10]
-        params_to_interpolate.append(city_name)
+        params_to_interpolate = sys.argv[3:9]
+        params_to_interpolate.append(city_save_name)
         Network2DTo3D.interpolate(params_to_interpolate, False)
 
 
 def read_cities_list(cities_json_path):
-
-    global param_cities_json, param_folder_path
-    param_cities_json = sys.argv[1]
-    param_folder_path = sys.argv[2]
-
     # Read JSON data
     if cities_json_path:
         with open(cities_json_path, 'r') as f:
@@ -49,7 +53,6 @@ def read_cities_list(cities_json_path):
 def run_main_workflow(*argv):
 
     if check_input():
-    #try:
         arcpy.AddMessage("run main workflow")
 
         param_cities_json = sys.argv[1]
@@ -59,7 +62,6 @@ def run_main_workflow(*argv):
         collect_data(cities_list_json, param_folder_path)
 
         arcpy.AddMessage("done")
-
 
 
 def check_input():

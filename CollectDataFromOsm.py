@@ -32,6 +32,15 @@ param_cities_json = None
 param_folder_path = None
 
 
+def replace_vowel(original_word):
+    vowels = "aeiou "
+    new_word = ""
+    for letter in original_word:
+        if letter not in vowels:
+            new_word += (letter.lower())
+    return new_word
+
+
 def read_cities_list(cities_json_path):
     # Read JSON data
     if cities_json_path:
@@ -44,17 +53,17 @@ def collect_data(cities_list_json, param_folder_path):
     # Loop through json file
     cities_list = cities_list_json["cities"]
     for city in cities_list.keys():
-        city_name = city.replace(" ", "_")
+        city_name = replace_vowel(city)
         city_places = cities_list[city]
         collect_data_per_city(city_name, city_places, param_folder_path)
 
 
-def collect_data_per_city(city_name, city_places, param_folder_path):
+def collect_data_per_city(city_name, city_save_name, city_places, param_folder_path):
     # Set print osm default logs
     ox.config(log_file=True, log_console=True, use_cache=True)
 
-    city_network_name = "osm_{0}".format(city_name)
-    city_bound_name = "osm_{0}".format(city_name)
+    city_network_name = "osm_{0}".format(city_save_name)
+    city_bound_name = "osm_{0}".format(city_save_name)
 
     # Collect boundaries using city name (or place name)
     # Save city boundaries as shapefile
