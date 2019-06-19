@@ -1,15 +1,13 @@
 
 # --------------------------------
-# Name:        Network2DTo3D.py
-# Purpose:
-# Author: Christopher D. Higgins, Jimmy Chan
+# Name: Network2DTo3D.py
+# Purpose: Script to do 3D interpolation of road network based on DEM
+# Author: Christopher D. Higgins, Jimmy Chan, Ronnie Ma
 # Institution: The Hong Kong Polytechnic University
 # Department: Department of Land Surveying and Geo-Informatics
-# Created     xx/xx/2019
+# Edited: 19/06/2019
 # ArcGIS Version:   ArcGIS Pro 2.3.3
 # Python Version:   3.6
-# License:
-#
 #
 # Using this:
 #
@@ -47,6 +45,7 @@
 import arcpy
 import sys
 from datetime import datetime
+import os
 
 # parameters hardcoded
 query_no_slope = "TUNNEL = 'yes' Or BRIDGE = 'yes'"
@@ -61,7 +60,7 @@ param_in_network = None
 param_sample_distance = None
 param_has_no_split_edges = None
 param_has_no_slope_edges = None
-param_out_network = None
+param_out_network_dir = None
 param_location_save_name = None
 
 # temporary file names
@@ -92,7 +91,7 @@ def get_current_timestamp_str():
 
 def set_interpolation_params(params, standalone=False):
     # Retrieve user entered parameters
-    global param_in_raster, param_in_network, param_sample_distance, param_has_no_split_edges, param_has_no_slope_edges, param_out_network, param_location_save_name
+    global param_in_raster, param_in_network, param_sample_distance, param_has_no_split_edges, param_has_no_slope_edges, param_out_network_dir, param_location_save_name, param_out_gdb, param_out_network
     if params is None:
         params = sys.argv
 
@@ -102,7 +101,10 @@ def set_interpolation_params(params, standalone=False):
         param_sample_distance = params[2]
         param_has_no_split_edges = params[3]
         param_has_no_slope_edges = params[4]
-        param_out_network = params[5] + "_" + timestamp
+        #param_out_network_dir = params[5] + "_" + timestamp
+        param_out_network_dir = "{0}/output/network".format(params[5])
+        param_out_gdb = "{0}_{1}.gdb".format(param_location_save_name, timestamp)
+        param_out_network = param_out_network_dir + "/" + param_out_gdb + "/network"
     else:
         param_location_save_name = params[6]
         param_in_network = "{0}/data/osm_{1}/edges/edges.shp".format(params[0], param_location_save_name)
@@ -110,7 +112,9 @@ def set_interpolation_params(params, standalone=False):
         param_sample_distance = params[2]
         param_has_no_split_edges = params[3]
         param_has_no_slope_edges = params[4]
-        param_out_network = "{0}/output/network/{1}.shp".format(params[5], param_location_save_name)
+        param_out_network_dir = "{0}/output/network".format(params[5])
+        param_out_gdb = "{0}.gdb".format(param_location_save_name)
+        param_out_network = param_out_network_dir + "/" + param_out_gdb + "/network"
 
     #Parameters for testing only
 
@@ -150,9 +154,9 @@ def generate_points_along_lines(lines_layer):
         arcpy.GeneratePointsAlongLines_management(lines_layer, lyr_points_split, "DISTANCE", 10, "", "")
 
 
-def add_fields_or_calculate(case, param=None):
+def add_fields_or_calculate(case, param_lyr=None):
     if case == add_field_Z:
-        arcpy.AddFields_management(param,
+        arcpy.AddFields_management(param_lyr,
                                    "Start_Z DOUBLE # # # #;"
                                    "End_Z DOUBLE # # # #;"
                                    "Max_Z DOUBLE # # # #;"
@@ -163,14 +167,14 @@ def add_fields_or_calculate(case, param=None):
                                    )
         return
     elif case == calculate_field_z:
-        arcpy.CalculateGeometryAttributes_management(param, "Start_X LINE_START_X;Start_Y LINE_START_Y;End_X LINE_END_X;End_Y LINE_END_Y;Start_Z LINE_START_Z;End_Z LINE_END_Z", None, None, None)
-        arcpy.CalculateFields_management(param,
+        arcpy.CalculateGeometryAttributes_management(param_lyr, "Start_X LINE_START_X;Start_Y LINE_START_Y;End_X LINE_END_X;End_Y LINE_END_Y;Start_Z LINE_START_Z;End_Z LINE_END_Z", None, None, None)
+        arcpy.CalculateFields_management(param_lyr,
                                          "PYTHON3",
                                          "Max_Z 'max(!Start_Z!, !End_Z!)';",
                                          None)
         return
     elif case == add_walktime_field:
-        arcpy.AddFields_management(param,
+        arcpy.AddFields_management(param_lyr,
                                    "FT_MIN_2D DOUBLE # # # #;"
                                    "TF_MIN_2D DOUBLE # # # #;"
                                    "FT_MIN_3D DOUBLE # # # #;"
@@ -178,7 +182,7 @@ def add_fields_or_calculate(case, param=None):
                                    )
         return
     elif case == calculate_walktime_field:
-        arcpy.CalculateFields_management(param,
+        arcpy.CalculateFields_management(param_lyr,
                                          "PYTHON3",
                                          "FT_MIN_2D (!shape.length!/(5036.742125))*60;"
                                          "TF_MIN_2D (!shape.length!/(5036.742125))*60;"
@@ -187,15 +191,18 @@ def add_fields_or_calculate(case, param=None):
                                          None)
         return
     elif case == add_circle_segment:
-        arcpy.AddFields_management(param,
+        arcpy.AddFields_management(param_lyr,
                                    "SEGMENT_ID LONG # # # #;"
                                    )
 
         return
     elif case == calculate_circle_segment:
-        arcpy.SelectLayerByAttribute_management(param, "NEW_SELECTION", "Start_X = End_X And Start_Y = End_Y", None)
-        arcpy.CalculateField_management(param, "SEGMENT_ID", "!OBJECTID!", "PYTHON3", None)
-        arcpy.SelectLayerByAttribute_management(param, "CLEAR_SELECTION")
+        arcpy.SelectLayerByAttribute_management(param_lyr, "NEW_SELECTION", "Start_X = End_X And Start_Y = End_Y", None)
+        if len(arcpy.ListFields(param_lyr, "OBJECTID")) > 0:
+            arcpy.CalculateField_management(param_lyr, "SEGMENT_ID", "!OBJECTID!", "PYTHON3", None)
+        else:
+            arcpy.CalculateField_management(param_lyr, "SEGMENT_ID", "!FID!", "PYTHON3", None)
+        arcpy.SelectLayerByAttribute_management(param_lyr, "CLEAR_SELECTION")
 
     return
 
@@ -241,6 +248,9 @@ def simplify_and_generate_output():
 
     # Copy lines with slope to output layer -- avoid circular segments (those with SEGMENT_ID)
     arcpy.SelectLayerByAttribute_management(lyr_output_feature_class_select, "NEW_SELECTION", "AVG_SLOPE = 0 OR SEGMENT_ID is not null")
+    if not os.path.exists(param_out_network_dir):
+        os.makedirs(param_out_network_dir)
+    arcpy.CreateFileGDB_management(param_out_network_dir, param_out_gdb)
     arcpy.CopyFeatures_management(lyr_output_feature_class_select, param_out_network)
 
     # Dissolve and append non-sloped lines
@@ -316,7 +326,7 @@ def interpolate(params, standalone=False):
         arcpy.AddMessage("Interpolation ended: {0}".format(get_current_timestamp_str()))
 
     except Exception as e:
-        arcpy.AddMessage(str(e))
+        arcpy.AddMessage("*****" + str(e) + "*****")
 
 
 if __name__ == "__main__":

@@ -1,19 +1,21 @@
 # --------------------------------
-# Name:        CollectDataFromOsm.py
-# Purpose:
-# Author: Christopher D. Higgins
+# Name: CollectDataFromOsm.py
+# Purpose: Extraction of OSM data based on location names
+# Author: Christopher D. Higgins, Ronnie Ma
 # Institution: The Hong Kong Polytechnic University
 # Department: Department of Land Surveying and Geo-Informatics
-# Created     14/06/2019
+# Edited:     14/06/2019
 # ArcGIS Version:   ArcGIS Pro 2.3.3
 # Python Version:   3.6
-# License:
-#
 #
 # Using this:
 #
+# Parameters to input:
+# 1 - param_cities_json (String) - Path of json containing cities information
+# 2 - param_folder_path (String) - Path to raster output folder
+#
 #  1) Call this as a script
-#     python <...CollectDataFromOsm.py> <cities_json_path> <folder_path>
+#     python <...CollectDataFromOsm.py> <param_cities_json> <param_folder_path>
 #     Example:
 #     python CollectDataFromOsm.py cities.json '\\data'
 #
@@ -61,6 +63,7 @@ def collect_data(cities_list_json, param_folder_path):
 def collect_data_per_city(city_name, city_save_name, city_places, param_folder_path):
     # Set print osm default logs
     ox.config(log_file=True, log_console=True, use_cache=True)
+    ox.log("===== Download network from OSM {0} begins =====".format(city_name))
 
     city_network_name = "osm_{0}".format(city_save_name)
     city_bound_name = "osm_{0}".format(city_save_name)
@@ -75,6 +78,8 @@ def collect_data_per_city(city_name, city_save_name, city_places, param_folder_p
     # Save network as shapefile
     G = ox.graph_from_place(city_places, network_type='walk', retain_all=True)
     ox.save_graph_shapefile(G, filename=city_network_name, folder=param_folder_path)
+
+    ox.log("===== Download end for network from OSM {0} =====".format(city_name))
 
 
 def download_data(params):

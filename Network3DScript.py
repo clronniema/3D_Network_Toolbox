@@ -1,20 +1,38 @@
 
 # --------------------------------
-# Name:        Network3DScript.py
-# Purpose:
-# Author: Christopher D. Higgins, Jimmy Chan
+# Name: Network3DScript.py
+# Purpose: Main file to execute OSM data extraction and 3D interpolation
+# Author: Christopher D. Higgins, Ronnie Ma
 # Institution: The Hong Kong Polytechnic University
 # Department: Department of Land Surveying and Geo-Informatics
-# Created     xx/xx/2019
+# Edited:     19/06/2019
 # ArcGIS Version:   ArcGIS Pro 2.3.3
 # Python Version:   3.6
-# License:
+#
+# Using this:
+#
+# Parameters to input:
+# 1 - param_cities_json (String) - Path of json containing cities information
+# 2 - param_folder_path (String) - Path to raster output folder
+# 3 - param_in_network (String) - Path to OSM road network data folder
+# 4 - param_in_raster (String) - Path to raster folder
+# 5 - param_sample_distance (Numeric) - Sampling radius for roads to split
+# 6 - param_has_no_split_edges (Boolean) - There are edges that cannot be split, such as bridges
+# 7 - param_has_no_slope_edges (Boolean) - There are edges that has edges that are not slopes
+# 8 - param_out_network (String) - Path to output network folder
+# 9 - param_location_save_name (String) - Name of location to save as  (provided from Network3DScript)
+#
+#  1) Call this as a script
+#     python <...Network3DScript.py> <cities_json_path> <folder_path> <param_in_network> <param_in_raster> <param_sample_distance> <param_has_no_split_edges> <param_has_no_slope_edges> <param_out_network>
+#     Example:
+#     python Network3DScript.py cities.json '\\data' "OSMnx_Walk" "HK_DTM_2m_Clip" 10 True True "Output_Network"
+#
 # --------------------------------
 
 import arcpy
 import sys
 import json
-import CollectDSMFromUsgs, CollectDataFromOsm, Network2DTo3D
+import CollectDataFromOsm, Network2DTo3D
 
 __version__ = "0.1"
 
@@ -81,5 +99,8 @@ if __name__ == '__main__':
     # 1. Collect network data from OSM
     # 2. Collect DSM from USGS
     # 3. Interpolate!
+
+    print("==================== Script Start ==================")
     run_main_workflow(sys.argv)
+    print("==================== Script End ==================")
 
