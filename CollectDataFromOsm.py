@@ -5,19 +5,17 @@
 # Institution: The Hong Kong Polytechnic University
 # Department: Department of Land Surveying and Geo-Informatics
 # Edited:     14/06/2019
-# ArcGIS Version:   ArcGIS Pro 2.3.3
-# Python Version:   3.6
 #
 # Using this:
 #
 # Parameters to input:
 # 1 - param_cities_json (String) - Path of json containing cities information
-# 2 - param_folder_path (String) - Path to raster output folder
+# 2 - param_folder_path (String) - Path to city boundaries and network output folder, a folder named "data" will be created
 #
 #  1) Call this as a script
 #     python <...CollectDataFromOsm.py> <param_cities_json> <param_folder_path>
 #     Example:
-#     python CollectDataFromOsm.py cities.json '\\data'
+#     python CollectDataFromOsm.py cities.json '3D_Network_Output'
 #
 #  2) Import script and pass parameters
 #     import Network2DTo3D
@@ -29,6 +27,7 @@
 import osmnx as ox
 import json
 import sys
+import arcpy
 
 param_cities_json = None
 param_folder_path = None
@@ -62,7 +61,7 @@ def collect_data(cities_list_json, param_folder_path):
 
 def collect_data_per_city(city_name, city_save_name, city_places, param_folder_path):
     # Set print osm default logs
-    ox.config(log_file=True, log_console=True, use_cache=True)
+    ox.config(log_file=False, log_console=True, use_cache=True)
     ox.log("===== Download network from OSM {0} begins =====".format(city_name))
 
     city_network_name = "osm_{0}".format(city_save_name)
@@ -88,6 +87,7 @@ def download_data(params):
     # Main workflow for downloading data
     global param_cities_json, param_folder_path
     param_cities_json = params[0]
+    # Creates a subfolder named "data"
     param_folder_path = params[1]
 
     cities_list_json = read_cities_list(param_cities_json)
