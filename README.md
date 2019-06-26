@@ -113,7 +113,7 @@ The offset in Tobler’s function specifies a maximum walking velocity of 1.67 m
   - *TF_MIN_3D*: Walk time in minutes to traverse the line segment in the To-From direction, based on the 3D length of the line and an assumed walking velocity based on the slope of the line segment ((*Start_Z*-*End_Z*)/2D length of the line).
 
 #### Example Usage
-<img width="500" alt="toolcapture_sample" src="/assets/img/toolcapture_sample.jpg">
+<img width="500" alt="toolcapture_sample" src="/assets/img/ToolCapture_Sample.jpg">
 
 ## Creating your Network Dataset
 With the tool complete, you can now make a 3D pedestrian network using Network Analyst in ArcGIS. In particular, users can model elevation using feature geometry and specify the **TravelTime_3D** (using the *FT_MIN_3D* and *TF_MIN_3D* fields) cost attribute in **minutes**. A second **TravelTime_2D** (using the *FT_MIN_2D* and *TF_MIN_2D* fields) cost attribute can be specified and compared with results from the **TravelTime_3D** cost attribute to reveal the estimated impact on pedestrian travel when taking slope into account.

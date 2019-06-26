@@ -1,16 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9bd209f7-b726-49f9-9931-1adf56f60d97" name="Minor styling change" comment="Minor styling change">
-      <change afterPath="$PROJECT_DIR$/Network3D.pyt" afterDir="false" />
+    <list default="true" id="9bd209f7-b726-49f9-9931-1adf56f60d97" name="Minor styling change" comment="Combined into 1 Python Toolbox">
+      <change beforePath="$PROJECT_DIR$/.idea/3D_Network_Toolbox.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/3D_Network_Toolbox.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CollectDataFromOsm.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DtmRename.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Network3DToolbox.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/NetworkInterpolation.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/img/ToolCapture.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/ToolCapture.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cities.json" beforeDir="false" afterPath="$PROJECT_DIR$/assets/cities.json" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -19,17 +15,16 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.3137255">
+    <splitter split-orientation="horizontal" split-proportion="0.3826692">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/Network3D.pyt">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="435">
-                  <caret line="123" column="53" lean-forward="true" selection-start-line="123" selection-start-column="25" selection-end-line="123" selection-end-column="53" />
+                <state relative-caret-position="-57">
+                  <caret line="111" column="30" selection-start-line="111" selection-start-column="30" selection-end-line="111" selection-end-column="30" />
                   <folding>
                     <element signature="e#186#195#0" expanded="true" />
-                    <element signature="e#9617#24840#0" />
                   </folding>
                 </state>
               </provider>
@@ -42,13 +37,10 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/Network3D.pyt">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="434">
+                <state relative-caret-position="3648">
                   <caret line="192" column="37" selection-start-line="192" selection-start-column="37" selection-end-line="192" selection-end-column="37" />
                   <folding>
                     <element signature="e#186#195#0" expanded="true" />
-                    <element signature="e#26958#27140#0" />
-                    <element signature="e#27408#27712#0" />
-                    <element signature="e#27818#28838#0" />
                   </folding>
                 </state>
               </provider>
@@ -58,8 +50,8 @@
             <entry file="file://$PROJECT_DIR$/README.md">
               <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
                 <state split_layout="SPLIT">
-                  <first_editor relative-caret-position="181">
-                    <caret line="113" lean-forward="true" selection-start-line="113" selection-end-line="113" />
+                  <first_editor relative-caret-position="432">
+                    <caret line="115" column="72" selection-start-line="115" selection-start-column="72" selection-end-line="115" selection-end-column="72" />
                   </first_editor>
                   <second_editor />
                 </state>
@@ -79,7 +71,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>interpolate</find>
       <find>param_folder_path</find>
       <find>param_in_network</find>
       <find>check_input</find>
@@ -109,6 +100,7 @@
       <find>DtmRename</find>
       <find>CollectDataFrom</find>
       <find>jpg</find>
+      <find>ToolCapture</find>
     </findStrings>
     <replaceStrings>
       <replace>/</replace>
@@ -120,6 +112,11 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GithubProjectSettings">
+    <option name="CREATE_PULL_REQUEST_DEFAULT_BRANCH" value="master" />
+    <option name="CREATE_PULL_REQUEST_DEFAULT_REPO_USER" value="higgicd" />
+    <option name="CREATE_PULL_REQUEST_DEFAULT_REPO_NAME" value="3D_Networks_Project" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -142,7 +139,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-7" />
+    <option name="x" value="313" />
+    <option name="y" value="22" />
     <option name="width" value="974" />
     <option name="height" value="1047" />
   </component>
@@ -396,7 +394,21 @@
       <option name="project" value="LOCAL" />
       <updated>1561029733584</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Combined into 1 Python Toolbox">
+      <created>1561544592383</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1561544592383</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Combined into 1 Python Toolbox">
+      <created>1561545582899</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1561545582899</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TodoView">
@@ -412,8 +424,8 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.6066225" visible="true" weight="0.15724947" />
-      <window_info id="Structure" order="1" sideWeight="0.39337748" side_tool="true" visible="true" weight="0.15724947" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.6009693" visible="true" weight="0.16257995" />
+      <window_info id="Structure" order="1" sideWeight="0.3990307" side_tool="true" visible="true" weight="0.16257995" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.33044422" />
@@ -422,10 +434,11 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32932165" />
-      <window_info anchor="bottom" id="Version Control" order="7" weight="0.32827735" />
-      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.4989339" visible="true" weight="0.18201517" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5026652" side_tool="true" weight="0.3618635" />
+      <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.49946696" weight="0.32502708" />
+      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49671772" weight="0.27789935" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50053304" side_tool="true" visible="true" weight="0.32936078" />
       <window_info anchor="bottom" id="Python Console" order="10" sideWeight="0.49733475" weight="0.3618635" />
+      <window_info anchor="bottom" id="GitHub Pull Requests" order="11" sideWeight="0.49946696" weight="0.32936078" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -453,6 +466,17 @@
       <window_info anchor="right" id="R Graphics" order="3" />
       <window_info anchor="right" id="R Packages" order="4" />
     </layout-to-restore>
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="SHOW_OTHER_BRANCHES" value="true" />
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -504,7 +528,8 @@
     <MESSAGE value="Optimizing flow between python scripts" />
     <MESSAGE value="Improvements to descriptions of the tools" />
     <MESSAGE value="Improved README and optimized parameters input" />
-    <option name="LAST_COMMIT_MESSAGE" value="Improved README and optimized parameters input" />
+    <MESSAGE value="Combined into 1 Python Toolbox" />
+    <option name="LAST_COMMIT_MESSAGE" value="Combined into 1 Python Toolbox" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -719,71 +744,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/3D_Networks_Project.tbx">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/3D_Network_Project.tbx">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DtmRename.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="1" column="10" lean-forward="true" selection-start-line="1" selection-start-column="10" selection-end-line="1" selection-end-column="10" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/NetworkInterpolation.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4705">
-          <caret line="259" column="4" selection-start-line="259" selection-start-column="4" selection-end-line="259" selection-end-column="4" />
-          <folding>
-            <element signature="e#1903#1915#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Network3DToolbox.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="957">
-          <caret line="76" lean-forward="true" selection-start-line="76" selection-end-line="76" />
-          <folding>
-            <element signature="e#1416#1428#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CollectDataFromOsm.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="669">
-          <caret line="98" column="4" selection-start-line="98" selection-start-column="4" selection-end-line="98" selection-end-column="4" />
-          <folding>
-            <element signature="e#897#915#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Network3D.Network2DTo3D.pyt.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Network3D.pyt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="434">
-          <caret line="192" column="37" selection-start-line="192" selection-start-column="37" selection-end-line="192" selection-end-column="37" />
-          <folding>
-            <element signature="e#186#195#0" expanded="true" />
-            <element signature="e#26958#27140#0" />
-            <element signature="e#27408#27712#0" />
-            <element signature="e#27818#28838#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/img/ToolCapture_APro.JPG">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/3D_Networks_Project.tbx" />
+    <entry file="file://$PROJECT_DIR$/3D_Network_Project.tbx" />
+    <entry file="file://$PROJECT_DIR$/DtmRename.py" />
+    <entry file="file://$PROJECT_DIR$/NetworkInterpolation.py" />
+    <entry file="file://$PROJECT_DIR$/Network3DToolbox.py" />
+    <entry file="file://$PROJECT_DIR$/CollectDataFromOsm.py" />
+    <entry file="file://$PROJECT_DIR$/Network3D.Network2DTo3D.pyt.xml" />
+    <entry file="file://$PROJECT_DIR$/assets/img/ToolCapture_APro.JPG" />
     <entry file="file://$PROJECT_DIR$/assets/img/ToolCapture_Sample.JPG">
       <provider selected="true" editor-type-id="images" />
     </entry>
@@ -796,11 +764,21 @@
     <entry file="file://$PROJECT_DIR$/assets/img/3D_NetworkToolbox.jpg">
       <provider selected="true" editor-type-id="images" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/Network3D.pyt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3648">
+          <caret line="192" column="37" selection-start-line="192" selection-start-column="37" selection-end-line="192" selection-end-column="37" />
+          <folding>
+            <element signature="e#186#195#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="181">
-            <caret line="113" lean-forward="true" selection-start-line="113" selection-end-line="113" />
+          <first_editor relative-caret-position="432">
+            <caret line="115" column="72" selection-start-line="115" selection-start-column="72" selection-end-line="115" selection-end-column="72" />
           </first_editor>
           <second_editor />
         </state>
